@@ -1,515 +1,610 @@
-
-<!DOCTYPE html>
+```html
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#09070d">
-<meta name="description" content="Midnight Hollow Studios — creators of 3 AM: Hall of Nightmares.">
 <meta name="google-site-verification" content="YhWY70b4UhAL1OIK3-jRuiGUgcE77YO38UfXHybEaDE">
-<title>Midnight Hollow Studios | Official Website</title>
+<title>Midnight Hollow Studios — Official Site</title>
 
 <style>
 :root {
-  --purple: #8b5cf6;
-  --light-purple: #d8b4fe;
-  --bg: #09070d;
-  --panel: #171020;
-  --text: #f7f2fb;
-  --muted: #b8aec5;
+  --site-primary:#6d28d9;
+  --site-background:#09070d;
+  --site-on-background:#f7f2fb;
+  --site-font-body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --site-font-heading:Georgia,"Times New Roman",serif;
 }
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
+  margin:0;
+  background:var(--site-background);
+  color:var(--site-on-background);
+  font-family:var(--site-font-body);
 }
-
-a { color: inherit; text-decoration: none; }
+a { color:inherit; text-decoration:none; }
+h1,h2,h3,p { margin-top:0; }
 
 .site-header {
-  min-height: 82px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 16px 6%;
-  background: #09070df2;
-  border-bottom: 1px solid #ffffff1c;
-  position: relative;
-  z-index: 5;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:22px clamp(20px,5vw,76px);
+  border-bottom:1px solid #ffffff1c;
+  background:#09070de8;
 }
-
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  line-height: 1.5;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
 }
-
-.brand img {
-  width: 46px;
-  height: 46px;
-  object-fit: contain;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 12px #8b5cf688);
+.brand-mark {
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border:1px solid #a78bfa;
+  color:#d8b4fe;
+  border-radius:50%;
 }
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.nav a { color: #d7cde2; }
-.nav a:hover { color: var(--light-purple); }
+.nav { display:flex; gap:24px; font-size:12px; }
+.nav a:hover { color:#d8b4fe; }
 
 .hero {
-  min-height: 650px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 90px 9%;
-  overflow: hidden;
-  isolation: isolate;
+  min-height:600px;
+  display:grid;
+  align-items:center;
+  padding:80px clamp(22px,9vw,140px);
   background:
-    linear-gradient(90deg, #09070df5 0%, #09070dc9 52%, #09070d85 100%),
-    linear-gradient(0deg, #09070d 0%, transparent 45%),
-    url("Banner.jpg") center / cover no-repeat,
-    #130b20;
+    radial-gradient(ellipse at 75% 45%,#51208a66,transparent 35%),
+    linear-gradient(110deg,#09070d,#100a1b 60%,#09070d);
 }
-
-.hero::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 350px;
-  height: 480px;
-  right: 10%;
-  top: 12%;
-  border: 1px solid #c4b5fd55;
-  border-radius: 48% 48% 35% 35%;
-  box-shadow: 0 0 70px #7c3aed33, inset 0 0 60px #7c3aed22;
-  transform: rotate(8deg);
-  pointer-events: none;
-}
-
-.hero-content { max-width: 740px; }
-
+.hero-content { max-width:700px; }
 .eyebrow {
-  color: var(--light-purple);
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 22px;
+  color:#c4b5fd;
+  letter-spacing:.24em;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
 }
-
 h1 {
-  margin: 0 0 26px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(48px, 8vw, 100px);
-  line-height: .96;
-  letter-spacing: -4px;
-  font-weight: normal;
+  font-family:var(--site-font-heading);
+  font-size:clamp(48px,8vw,100px);
+  line-height:.95;
+  letter-spacing:-.05em;
+  margin:25px 0;
 }
-
-h1 span {
-  display: block;
-  color: var(--light-purple);
-  font-style: italic;
-}
-
-.lead {
-  max-width: 540px;
-  color: #d0c6d8;
-  font-size: 17px;
-  line-height: 1.8;
-}
-
-.actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 32px;
-}
+h1 span { display:block; color:#c4b5fd; font-style:italic; }
+.lead { max-width:540px; color:#c5bdcf; line-height:1.8; }
+.actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
 
 .button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 22px;
-  border: 1px solid var(--purple);
-  background: var(--purple);
-  color: white;
-  border-radius: 5px;
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  transition: .2s;
-  cursor: pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 20px;
+  border:1px solid #a78bfa;
+  border-radius:6px;
+  background:var(--site-primary);
+  color:white;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.08em;
+  cursor:pointer;
 }
-
-.button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 25px #8b5cf655;
-}
-
-.button.secondary {
-  background: #ffffff08;
-  border-color: #ffffff50;
-}
+.button:hover { filter:brightness(1.15); }
+.button.secondary { background:#ffffff08; border-color:#ffffff35; }
 
 .status {
-  margin-top: 28px;
-  color: #b5a9c2;
-  font-size: 11px;
-  letter-spacing: 1px;
+  margin-top:25px;
+  color:#9e96ac;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
 }
 
-.status span {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 9px;
-  border-radius: 50%;
-  background: #fbbf24;
-  box-shadow: 0 0 12px #fbbf24;
+.section { padding:75px clamp(22px,9vw,140px); }
+.section-head {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:25px;
+  margin-bottom:32px;
 }
-
-.section { padding: 85px 9%; }
-.section-heading { margin-bottom: 35px; }
-
 h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(32px, 5vw, 54px);
-  font-weight: normal;
-  margin: 0 0 15px;
+  font-family:var(--site-font-heading);
+  font-size:clamp(32px,5vw,54px);
+  margin-bottom:10px;
 }
-
-.section-description {
-  max-width: 650px;
-  color: var(--muted);
-  line-height: 1.8;
-}
+.section-head p { color:#a9a0b5; max-width:440px; line-height:1.7; }
 
 .platforms {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
 }
-
-.card {
-  padding: 30px;
-  min-height: 230px;
-  border: 1px solid #ffffff20;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #21142f, #100c17);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.platform-card {
+  border:1px solid #ffffff20;
+  border-radius:12px;
+  padding:28px;
+  background:linear-gradient(145deg,#21142f,#100c17);
+  min-height:270px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
 }
-
-.card-icon {
-  font-size: 28px;
-  margin-bottom: 22px;
-  color: var(--light-purple);
+.platform-icon {
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border:1px solid #a78bfa80;
+  border-radius:10px;
+  margin-bottom:24px;
+  color:#ddd6fe;
+  font-size:22px;
 }
-
-.card h3 { font-size: 23px; margin: 0 0 12px; }
-
-.card p {
-  color: var(--muted);
-  line-height: 1.7;
-  font-size: 14px;
-  flex: 1;
+.platform-card h3 { font-size:22px; margin-bottom:8px; }
+.platform-card p { color:#aaa0b8; line-height:1.65; font-size:14px; flex:1; }
+.platform-choice { margin:12px 0; }
+.platform-choice:disabled {
+  opacity:.4;
+  cursor:not-allowed;
+  filter:grayscale(.5);
 }
-
-.platform-play {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 8px 0 12px;
-  padding: 13px 17px;
-  border: 1px solid var(--light-purple);
-  border-radius: 5px;
-  background: var(--purple);
-  color: white;
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  transition: .2s;
-}
-
-.platform-play:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 25px #8b5cf655;
-}
-
+.platform-card.platform-blocked { border-color:#ffffff12; }
+.platform-card.platform-blocked .platform-icon { opacity:.45; }
 .coming {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 9px 12px;
-  color: #fcd34d;
-  border: 1px solid #fcd34d55;
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-size:10px;
+  color:#fcd34d;
+  letter-spacing:.16em;
+  font-weight:800;
+  border:1px solid #fcd34d45;
+  padding:9px 12px;
+  border-radius:4px;
+}
+.platform-message {
+  min-height:1.5em;
+  margin-top:20px;
+  color:#c4b5fd;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.play-section {
+  padding:72px clamp(20px,7vw,100px);
+  background:linear-gradient(180deg,#100a18,#08060c);
+  border-top:1px solid #a78bfa35;
+}
+.game-shell {
+  max-width:1000px;
+  margin:28px auto 0;
+  border:1px solid #a78bfa70;
+  border-radius:14px;
+  overflow:hidden;
+  background:#07060b;
+}
+.game-top {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  padding:14px 18px;
+  background:#160e20;
+  color:#d8b4fe;
+  font-size:12px;
+}
+.game-scene {
+  min-height:340px;
+  position:relative;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 50% 45%,#3a2450,#171020 35%,#050409 75%);
+}
+.corridor {
+  position:absolute;
+  width:70%;
+  height:100%;
+  background:linear-gradient(90deg,transparent 48%,#b794f455 49%,#100b18 50%,#b794f455 51%,transparent 52%);
+  clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);
+}
+.door {
+  position:absolute;
+  width:76px;
+  height:130px;
+  top:28%;
+  left:calc(50% - 38px);
+  border:2px solid #9f8bb8;
+  background:linear-gradient(90deg,#1b1424,#08060b);
+  display:grid;
+  place-items:center;
+  color:#fcd34d;
+  font-size:25px;
+}
+.clock {
+  position:absolute;
+  top:18px;
+  font-family:Georgia,serif;
+  font-size:30px;
+  color:#fca5a5;
+}
+.game-message {
+  position:absolute;
+  bottom:18px;
+  left:15px;
+  right:15px;
+  text-align:center;
+  color:#f5f3ff;
+  font-size:14px;
+}
+.game-controls {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  padding:16px;
+  justify-content:center;
+  background:#100b16;
+}
+.game-controls button {
+  border:1px solid #a78bfa80;
+  border-radius:6px;
+  background:#241631;
+  color:#f5f3ff;
+  padding:12px 16px;
+  font:inherit;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+.game-inventory {
+  padding:0 16px 16px;
+  background:#100b16;
+  color:#c4b5fd;
+  text-align:center;
+  font-size:13px;
 }
 
 .features {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 25px;
-  margin-top: 38px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
 }
-
-.feature {
-  padding-top: 22px;
-  border-top: 1px solid #a78bfa77;
+.feature { border-top:1px solid #a78bfa70; padding-top:22px; }
+.feature b {
+  display:block;
+  font-family:var(--site-font-heading);
+  font-size:23px;
+  margin-bottom:10px;
+  font-weight:500;
 }
-
-.feature h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 23px;
-  font-weight: normal;
-}
-
-.feature p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
-}
-
+.feature p { color:#a9a0b5; line-height:1.7; font-size:14px; }
 .quote {
-  padding: 80px 20px;
-  text-align: center;
-  background: linear-gradient(180deg, #180c25, #09070d);
-  border-top: 1px solid #ffffff12;
-  border-bottom: 1px solid #ffffff12;
+  text-align:center;
+  background:linear-gradient(180deg,#140b21,#09070d);
+  padding:72px 20px;
 }
-
 .quote p {
-  max-width: 800px;
-  margin: 0 auto 20px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(25px, 4vw, 42px);
-  font-style: italic;
+  font-family:var(--site-font-heading);
+  font-style:italic;
+  font-size:clamp(25px,4vw,42px);
 }
-
 .quote span {
-  color: var(--light-purple);
-  font-size: 11px;
-  letter-spacing: 3px;
+  color:#c4b5fd;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  font-size:10px;
 }
-
 footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 28px 6%;
-  color: #92869f;
-  font-size: 11px;
-  line-height: 1.7;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:26px clamp(20px,5vw,76px);
+  color:#81778d;
+  font-size:11px;
 }
-
-@media (max-width: 700px) {
-  .site-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .nav {
-    gap: 17px;
-    flex-wrap: wrap;
-  }
-
-  .hero {
-    min-height: 600px;
-    padding: 75px 7%;
-    background-position: center;
-  }
-
-  .hero::after {
-    right: -120px;
-    opacity: .5;
-  }
-
-  h1 { letter-spacing: -2px; }
-
-  .platforms,
-  .features {
-    grid-template-columns: 1fr;
-  }
-
-  .section { padding: 65px 7%; }
-  footer { flex-direction: column; }
+.modal-backdrop {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:10;
+  background:#000b;
+  padding:20px;
+  align-items:center;
+  justify-content:center;
 }
+.modal-backdrop.open { display:flex; }
+.modal {
+  max-width:460px;
+  width:100%;
+  background:#160e20;
+  border:1px solid #a78bfa80;
+  padding:30px;
+  border-radius:12px;
+}
+.modal h3 { font-family:var(--site-font-heading); font-size:30px; }
+.modal p { color:#c5bdcf; line-height:1.7; }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-  }
+@media(max-width:700px) {
+  .nav a:not(.nav-download) { display:none; }
+  .section-head { display:block; }
+  .section-head p { margin-top:12px; }
+  .platforms,.features { grid-template-columns:1fr; }
+  footer { flex-direction:column; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  * { transition:none !important; }
 }
 </style>
 </head>
 
 <body>
+<div id="app">
 
 <header class="site-header">
   <a class="brand" href="#top">
-    <img src="icon.jpg" alt="Midnight Hollow Studios logo">
+    <span class="brand-mark">MH✦</span>
     <span>MIDNIGHT HOLLOW<br>STUDIOS</span>
   </a>
-
   <nav class="nav" aria-label="Main navigation">
     <a href="#experience">THE EXPERIENCE</a>
     <a href="#downloads">DOWNLOADS</a>
     <a href="#about">ABOUT</a>
+    <a class="nav-download" href="#downloads">GET THE GAME ↗</a>
   </nav>
 </header>
 
 <main id="top">
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">MIDNIGHT HOLLOW STUDIOS PRESENTS</div>
+    <h1>THE NIGHT<br>IS NOT <span>OVER.</span></h1>
+    <p class="lead">
+      Enter a world of abandoned places, hidden secrets, and nightmares
+      that begin when the clock strikes 3 AM. An independent horror
+      experience from Midnight Hollow Studios.
+    </p>
+    <div class="actions">
+      <a class="button" href="#downloads">↓ DOWNLOAD FOR PC</a>
+      <a class="button secondary" href="#experience">EXPLORE THE GAME</a>
+    </div>
+    <div class="status">Independent PC build in development</div>
+  </div>
+</section>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="eyebrow">MIDNIGHT HOLLOW STUDIOS PRESENTS</div>
+<section class="play-section" id="play">
+  <div class="eyebrow">Playable prototype</div>
+  <h2>THE FIRST NIGHT.</h2>
+  <p class="lead">
+    Explore the corridor, find three hidden keys, and unlock the exit.
+    This is a small browser prototype of 3 AM: Hall of Nightmares.
+  </p>
 
-      <h1>
-        THE NIGHT
-        <span>IS NOT OVER.</span>
-      </h1>
-
-      <p class="lead">
-        Enter a world of abandoned places, hidden secrets, and nightmares
-        that begin when the clock strikes 3 AM. An independent horror
-        experience from Midnight Hollow Studios.
-      </p>
-
-      <div class="actions">
-        <a class="button" href="#downloads">EXPLORE PLATFORMS</a>
-        <a class="button secondary" href="#experience">DISCOVER THE GAME</a>
-      </div>
-
-      <div class="status">
-        <span></span>Independent horror game studio
+  <div class="game-shell">
+    <div class="game-top">
+      <span>3 AM: HALL OF NIGHTMARES</span>
+      <span id="game-status">OBJECTIVE: FIND 3 KEYS</span>
+    </div>
+    <div class="game-scene">
+      <div class="corridor"></div>
+      <div class="clock">3:00 AM</div>
+      <div class="door" id="game-door">🔒</div>
+      <div class="game-message" id="game-message">
+        The hallway is cold and silent. Something flickers in the darkness...
       </div>
     </div>
-  </section>
+    <div class="game-controls">
+      <button type="button" id="look-left">← SEARCH LEFT</button>
+      <button type="button" id="look-center">LOOK AHEAD</button>
+      <button type="button" id="look-right">SEARCH RIGHT →</button>
+      <button type="button" id="use-door">TRY THE DOOR</button>
+      <button type="button" id="restart-game">RESTART</button>
+    </div>
+    <div class="game-inventory" id="game-inventory">Keys found: 0 / 3</div>
+  </div>
+</section>
 
-  <section class="section" id="downloads">
-    <div class="section-heading">
+<section class="section" id="downloads">
+  <div class="section-head">
+    <div>
       <div class="eyebrow">Choose your platform</div>
       <h2>ENTER THE NIGHT.</h2>
-      <p class="section-description">
-        Play the browser version on Windows or MacBook now.
-        Standalone installers are still in development.
-      </p>
     </div>
-
-    <div class="platforms">
-
-      <article class="card">
-        <div class="card-icon">▣</div>
-        <h3>Windows PC</h3>
-        <p>
-          Play 3 AM: Hall of Nightmares in your browser on a Windows
-          desktop or laptop. A separate Windows installer is not
-          available yet.
-        </p>
-
-        <a class="platform-play"
-           href="https://rosebud.ai/play/3-am-hall-of-nightmares"
-           target="_blank"
-           rel="noopener noreferrer">
-          PLAY ON WINDOWS ↗
-        </a>
-
-        <span class="coming">INSTALLER COMING SOON</span>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">⌘</div>
-        <h3>MacBook / macOS</h3>
-        <p>
-          Play 3 AM: Hall of Nightmares in your browser on your MacBook.
-          A separate macOS app is not available yet.
-        </p>
-
-        <a class="platform-play"
-           href="https://rosebud.ai/play/3-am-hall-of-nightmares"
-           target="_blank"
-           rel="noopener noreferrer">
-          PLAY ON MAC ↗
-        </a>
-
-        <span class="coming">MAC APP COMING SOON</span>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section" id="experience" style="background:#0e0a14">
-    <div class="eyebrow">3 AM: HALL OF NIGHTMARES</div>
-    <h2>EVERY DOOR HIDES A STORY.</h2>
-
-    <p class="section-description">
-      Enter abandoned locations, uncover hidden clues, and discover
-      secrets buried inside the darkness.
+    <p>
+      The standalone Windows and macOS versions are not available yet.
+      Only the option matching your detected operating system can be selected.
     </p>
+  </div>
 
-    <div class="features">
-      <article class="feature">
-        <h3>Explore the Unknown</h3>
-        <p>
-          Wander through abandoned halls, strange stations, and
-          places where nothing feels quite right.
-        </p>
-      </article>
+  <div class="platforms">
+    <article class="platform-card" id="windows-card">
+      <div class="platform-icon">▣</div>
+      <h3>Windows PC</h3>
+      <p>For Windows desktop and laptop players.</p>
+      <button class="button platform-choice" id="play-windows" type="button">
+        PLAY ON WINDOWS
+      </button>
+      <span class="coming">INSTALLER COMING SOON</span>
+    </article>
 
-      <article class="feature">
-        <h3>Find the Clues</h3>
-        <p>
-          Pay attention to details. Hidden rooms and mysterious
-          symbols may reveal more than they seem.
-        </p>
-      </article>
+    <article class="platform-card" id="mac-card">
+      <div class="platform-icon">⌘</div>
+      <h3>MacBook / macOS</h3>
+      <p>For compatible Mac computers.</p>
+      <button class="button platform-choice" id="play-mac" type="button">
+        PLAY ON MAC
+      </button>
+      <span class="coming">MAC APP COMING SOON</span>
+    </article>
+  </div>
 
-      <article class="feature">
-        <h3>Survive 3 AM</h3>
-        <p>
-          Experience an unsettling atmosphere filled with
-          mysteries that connect each nightmare.
-        </p>
-      </article>
+  <p class="platform-message" id="platform-message" role="status" aria-live="polite"></p>
+</section>
+
+<section class="section" id="experience" style="background:#0e0a14">
+  <div class="eyebrow">What awaits you</div>
+  <h2>EVERY DOOR HIDES A STORY.</h2>
+  <div class="features">
+    <div class="feature">
+      <b>Explore the unknown</b>
+      <p>Walk through abandoned halls, strange stations, and places where nothing feels quite right.</p>
     </div>
-  </section>
+    <div class="feature">
+      <b>Find the clues</b>
+      <p>Pay attention to details. Hidden rooms and mysterious symbols may reveal more than they seem.</p>
+    </div>
+    <div class="feature">
+      <b>Survive 3 AM</b>
+      <p>A quiet atmosphere, unsettling sounds, and mysteries that connect each nightmare.</p>
+    </div>
+  </div>
+</section>
 
-  <section class="quote" id="about">
-    <p>“Some doors should never be opened after 3 AM.”</p>
-    <span>MIDNIGHT HOLLOW STUDIOS</span>
-  </section>
-
+<section class="quote" id="about">
+  <p>“Some doors should never be opened after 3 AM.”</p>
+  <span>3 AM: Hall of Nightmares</span>
+</section>
 </main>
 
 <footer>
   <span>© 2026 MIDNIGHT HOLLOW STUDIOS</span>
-  <span>Official Website · PC Installers Coming Soon</span>
+  <span>Official studio website · Downloads not yet available</span>
 </footer>
+</div>
 
+<script>
+/* Detectează sistemul de operare al vizitatorului. */
+function detectOperatingSystem() {
+  const ua = navigator.userAgent || "";
+  const platform =
+    navigator.userAgentData && navigator.userAgentData.platform
+      ? navigator.userAgentData.platform
+      : (navigator.platform || "");
+
+  if (/Windows/i.test(ua) || /Win/i.test(platform)) return "windows";
+  if (/Macintosh|Mac OS X/i.test(ua) || /Mac/i.test(platform)) return "mac";
+
+  return "unknown";
+}
+
+const visitorOS = detectOperatingSystem();
+const windowsButton = document.getElementById("play-windows");
+const macButton = document.getElementById("play-mac");
+const windowsCard = document.getElementById("windows-card");
+const macCard = document.getElementById("mac-card");
+const platformMessage = document.getElementById("platform-message");
+
+if (visitorOS === "windows") {
+  macButton.disabled = true;
+  macButton.textContent = "MAC ONLY";
+  macCard.classList.add("platform-blocked");
+  platformMessage.textContent =
+    "Windows detected. The Mac option is disabled on this device.";
+} else if (visitorOS === "mac") {
+  windowsButton.disabled = true;
+  windowsButton.textContent = "WINDOWS ONLY";
+  windowsCard.classList.add("platform-blocked");
+  platformMessage.textContent =
+    "macOS detected. The Windows option is disabled on this device.";
+} else {
+  platformMessage.textContent =
+    "We couldn't detect your operating system. Installable versions aren't available yet.";
+}
+
+function handlePlatformClick(platform) {
+  if (visitorOS === "unknown") {
+    platformMessage.textContent =
+      "Access refused: your operating system could not be detected.";
+    return;
+  }
+
+  if (visitorOS !== platform) {
+    platformMessage.textContent =
+      "Access refused: this option is not intended for your operating system.";
+    return;
+  }
+
+  if (platform === "windows") {
+    platformMessage.textContent =
+      "The Windows installer is not available yet.";
+  } else {
+    platformMessage.textContent =
+      "The macOS app is not available yet.";
+  }
+}
+
+windowsButton.addEventListener("click", () => handlePlatformClick("windows"));
+macButton.addEventListener("click", () => handlePlatformClick("mac"));
+
+/* Prototipul jucabil din browser. */
+const gameKeys = new Set();
+let gameWon = false;
+
+const gameMessage = document.getElementById("game-message");
+const gameInventory = document.getElementById("game-inventory");
+const gameStatus = document.getElementById("game-status");
+const gameDoor = document.getElementById("game-door");
+
+function searchGame(direction) {
+  if (gameWon) return;
+
+  if (gameKeys.has(direction)) {
+    gameMessage.textContent = "You already searched here. Try another direction.";
+    return;
+  }
+
+  gameKeys.add(direction);
+
+  const clues = {
+    left: "You find a cold key beneath an old desk.",
+    center: "A key glimmers beside the stopped clock.",
+    right: "You find the last key in a dark corner."
+  };
+
+  gameMessage.textContent = clues[direction];
+  gameInventory.textContent = "Keys found: " + gameKeys.size + " / 3";
+
+  if (gameKeys.size === 3) {
+    gameStatus.textContent = "OBJECTIVE: OPEN THE DOOR";
+    gameDoor.textContent = "🔑";
+  } else {
+    gameStatus.textContent = "SEARCH FOR THE HIDDEN KEYS";
+  }
+}
+
+document.getElementById("look-left").addEventListener("click", () => searchGame("left"));
+document.getElementById("look-center").addEventListener("click", () => searchGame("center"));
+document.getElementById("look-right").addEventListener("click", () => searchGame("right"));
+
+document.getElementById("use-door").addEventListener("click", () => {
+  if (gameKeys.size < 3) {
+    gameMessage.textContent =
+      "The door is locked. You need " + (3 - gameKeys.size) + " more key(s).";
+    return;
+  }
+
+  gameWon = true;
+  gameDoor.textContent = "🚪";
+  gameMessage.textContent = "The door slowly opens... YOU ESCAPED THE FIRST NIGHT!";
+  gameStatus.textContent = "LEVEL COMPLETE";
+});
+
+document.getElementById("restart-game").addEventListener("click", () => {
+  gameKeys.clear();
+  gameWon = false;
+  gameDoor.textContent = "🔒";
+  gameStatus.textContent = "OBJECTIVE: FIND 3 KEYS";
+  gameInventory.textContent = "Keys found: 0 / 3";
+  gameMessage.textContent =
+    "The hallway is cold and silent. Something flickers in the darkness...";
+});
+</script>
 </body>
 </html>
+```
