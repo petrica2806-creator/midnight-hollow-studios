@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09070d">
+  <meta name="description" content="Midnight Hollow Studios — independent horror games. Discover 3 AM: Hall of Nightmares.">
+  <title>Midnight Hollow Studios</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #09070d;
+      color: #f7f2fb;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 7%;
+      border-bottom: 1px solid #39264b;
+      background: #0b0811;
+    }
+    .brand { font-size: 13px; letter-spacing: 3px; font-weight: bold; }
+    nav { display: flex; gap: 22px; }
+    a { color: #ddd6fe; text-decoration: none; }
+    nav a:hover { color: white; }
+    .hero {
+      min-height: 600px;
+      padding: 110px 8%;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(ellipse at 78% 40%, #6d28d955, transparent 38%),
+        linear-gradient(110deg, #09070d, #170d25, #09070d);
+    }
+    .hero-content { max-width: 760px; }
+    .eyebrow {
+      color: #c4b5fd;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    h1 {
+      font-size: clamp(48px, 9vw, 100px);
+      line-height: .98;
+      margin: 24px 0;
+    }
+    h1 span { color: #c4b5fd; }
+    p { color: #c5bdcf; line-height: 1.8; }
+    .hero p { max-width: 540px; font-size: 17px; }
+    .button {
+      display: inline-block;
+      margin: 18px 10px 0 0;
+      padding: 15px 22px;
+      background: #6d28d9;
+      color: white;
+      border: 1px solid #a78bfa;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .button.secondary { background: transparent; }
+    section { padding: 80px 8%; }
+    h2 { font-size: clamp(30px, 5vw, 48px); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 35px;
+    }
+    .card {
+      padding: 28px;
+      background: #160e20;
+      border: 1px solid #51366a;
+      border-radius: 12px;
+    }
+    .card h3 { font-size: 24px; }
+    .coming {
+      display: inline-block;
+      color: #fcd34d;
+      border: 1px solid #fcd34d66;
+      padding: 9px 12px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 25px;
+    }
+    .feature { border-top: 1px solid #a78bfa; padding-top: 20px; }
+    .quote {
+      text-align: center;
+      background: linear-gradient(#170d25, #09070d);
+    }
+    .quote p { font-size: clamp(24px, 4vw, 40px); }
+    footer {
+      padding: 28px 7%;
+      border-top: 1px solid #39264b;
+      color: #91869e;
+      font-size: 12px;
+      text-align: center;
+    }
+    @media (max-width: 650px) {
+      header { align-items: flex-start; gap: 18px; flex-direction: column; }
+      nav { flex-wrap: wrap; gap: 14px; font-size: 12px; }
+      .hero { padding: 85px 7%; }
+      section { padding: 60px 7%; }
+      .cards, .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">✦ MIDNIGHT HOLLOW STUDIOS</div>
+    <nav>
+      <a href="#game">THE GAME</a>
+      <a href="#downloads">DOWNLOADS</a>
+      <a href="#about">ABOUT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">AN INDEPENDENT HORROR STUDIO</div>
+        <h1>THE NIGHT<br>IS NOT <span>OVER.</span></h1>
+        <p>
+          Abandoned places. Hidden secrets. Nightmares that begin
+          when the clock strikes 3 AM.
+        </p>
+        <a class="button" href="#game">EXPLORE THE GAME</a>
+        <a class="button secondary" href="#downloads">OUR PLATFORMS</a>
+      </div>
+    </section>
+
+    <section id="game">
+      <div class="eyebrow">OUR HORROR EXPERIENCE</div>
+      <h2>3 AM: HALL OF NIGHTMARES</h2>
+      <p>
+        Enter forgotten places, uncover hidden clues, and discover
+        the mysteries waiting behind every door.
+      </p>
+    </section>
+
+    <section id="downloads">
+      <div class="eyebrow">CHOOSE YOUR PLATFORM</div>
+      <h2>ENTER THE NIGHT.</h2>
+      <p>
+        Standalone PC versions are not available yet.
+        Download options will appear when tested builds are ready.
+      </p>
+      <div class="cards">
+        <article class="card">
+          <h3>Windows PC</h3>
+          <p>A Windows version is in development.</p>
+          <span class="coming">COMING SOON</span>
+        </article>
+        <article class="card">
+          <h3>macOS</h3>
+          <p>A compatible Mac version is planned.</p>
+          <span class="coming">COMING SOON</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="eyebrow">ABOUT THE STUDIO</div>
+      <h2>EVERY DOOR HIDES A STORY.</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Explore</h3>
+          <p>Walk through abandoned places where nothing feels right.</p>
+        </div>
+        <div class="feature">
+          <h3>Discover</h3>
+          <p>Find clues and hidden rooms that reveal strange secrets.</p>
+        </div>
+        <div class="feature">
+          <h3>Survive</h3>
+          <p>Face the mystery of 3 AM and uncover the story.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote">
+      <p>“Some doors should never be opened after 3 AM.”</p>
+      <div class="eyebrow">MIDNIGHT HOLLOW STUDIOS</div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 MIDNIGHT HOLLOW STUDIOS · OFFICIAL WEBSITE
+  </footer>
+</body>
+</html>
