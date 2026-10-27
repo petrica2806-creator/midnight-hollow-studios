@@ -1,610 +1,172 @@
-```html
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="google-site-verification" content="YhWY70b4UhAL1OIK3-jRuiGUgcE77YO38UfXHybEaDE">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2321142f'/%3E%3Ctext x='5' y='42' font-size='27' font-weight='bold' fill='%23d8b4fe'%3EMH%3C/text%3E%3Ctext x='43' y='19' font-size='18' fill='%23a78bfa'%3E✦%3C/text%3E%3C/svg%3E">
+<meta name="google-site-verification" content="YhWY70b4UhAL1OIK3-jRuiGUgcE77YO38UfXHybEaDE" />
 <title>Midnight Hollow Studios — Official Site</title>
-
 <style>
 :root {
-  --site-primary:#6d28d9;
-  --site-background:#09070d;
-  --site-on-background:#f7f2fb;
-  --site-font-body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  --site-font-heading:Georgia,"Times New Roman",serif;
+  --site-primary: #6d28d9;
+  --site-secondary: #21142f;
+  --site-background: #09070d;
+  --site-on-primary: #ffffff;
+  --site-on-secondary: #f3e8ff;
+  --site-on-background: #f7f2fb;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Georgia, "Times New Roman", serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
 }
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  margin:0;
-  background:var(--site-background);
-  color:var(--site-on-background);
-  font-family:var(--site-font-body);
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--site-background); color: var(--site-on-background); font-family: var(--site-font-body); }
+#app { min-height: 100vh; width: 100%; border-radius: 0; overflow: hidden; background-color: var(--site-background); color: var(--site-on-background); }
+.site-header { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px clamp(20px,5vw,76px); border-bottom:1px solid #ffffff1c; position:relative; z-index:2; background: #09070de8; }
+.brand { display:flex; gap:12px; align-items:center; font-size:12px; font-weight:800; letter-spacing:.14em; }
+.brand-mark { display:grid; place-items:center; width:38px; height:38px; border:1px solid #a78bfa; color:#d8b4fe; border-radius:50%; box-shadow:0 0 24px #7c3aed40; }
+.nav { display:flex; align-items:center; gap:clamp(14px,3vw,34px); font-size:13px; }
 a { color:inherit; text-decoration:none; }
-h1,h2,h3,p { margin-top:0; }
-
-.site-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  padding:22px clamp(20px,5vw,76px);
-  border-bottom:1px solid #ffffff1c;
-  background:#09070de8;
-}
-.brand {
-  display:flex;
-  gap:12px;
-  align-items:center;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:.14em;
-}
-.brand-mark {
-  display:grid;
-  place-items:center;
-  width:38px;
-  height:38px;
-  border:1px solid #a78bfa;
-  color:#d8b4fe;
-  border-radius:50%;
-}
-.nav { display:flex; gap:24px; font-size:12px; }
-.nav a:hover { color:#d8b4fe; }
-
-.hero {
-  min-height:600px;
-  display:grid;
-  align-items:center;
-  padding:80px clamp(22px,9vw,140px);
-  background:
-    radial-gradient(ellipse at 75% 45%,#51208a66,transparent 35%),
-    linear-gradient(110deg,#09070d,#100a1b 60%,#09070d);
-}
+.nav a { opacity:.78; }
+.nav a:hover { opacity:1; color:#d8b4fe; }
+.hero { position:relative; min-height:660px; display:grid; align-items:center; padding:90px clamp(22px,9vw,140px); isolation:isolate; background: radial-gradient(ellipse at 75% 45%, #51208a66 0, transparent 35%), linear-gradient(110deg,#09070d 12%,#100a1b 60%,#09070d 100%); }
+.hero::before { content:""; position:absolute; z-index:-1; inset:0; opacity:var(--site-decoration-opacity); background: radial-gradient(ellipse at 72% 55%, transparent 0 12%, #a855f71c 12.5%, transparent 13% 18%, #a855f712 18.5%, transparent 19%), linear-gradient(90deg,transparent 49.8%,#a78bfa12 50%,transparent 50.2%); mask-image:linear-gradient(90deg,transparent,black 35%,black); }
+.hero::after { content:""; position:absolute; z-index:-1; width:min(42vw,510px); aspect-ratio: .65; right:10%; top:13%; border:1px solid #c4b5fd65; border-radius:50% 50% 44% 44%; box-shadow:0 0 35px #7c3aed55,inset 0 0 42px #7c3aed2b; opacity:var(--site-decoration-opacity); transform:perspective(500px) rotateY(-18deg); }
 .hero-content { max-width:700px; }
-.eyebrow {
-  color:#c4b5fd;
-  letter-spacing:.24em;
-  font-size:11px;
-  font-weight:800;
-  text-transform:uppercase;
-}
-h1 {
-  font-family:var(--site-font-heading);
-  font-size:clamp(48px,8vw,100px);
-  line-height:.95;
-  letter-spacing:-.05em;
-  margin:25px 0;
-}
+.eyebrow { color:#c4b5fd; letter-spacing:.28em; font-size:11px; font-weight:800; text-transform:uppercase; display:flex; align-items:center; gap:12px; }
+.eyebrow::before { content:""; height:1px; width:34px; background:#a78bfa; }
+h1,h2,h3,p { margin-top:0; }
+h1 { font-family:var(--site-font-heading); font-size:clamp(48px,8vw,104px); line-height:.92; letter-spacing:-.055em; margin:25px 0; font-weight:600; text-wrap:balance; }
 h1 span { display:block; color:#c4b5fd; font-style:italic; }
-.lead { max-width:540px; color:#c5bdcf; line-height:1.8; }
-.actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
-
-.button {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px 20px;
-  border:1px solid #a78bfa;
-  border-radius:6px;
-  background:var(--site-primary);
-  color:white;
-  font-weight:800;
-  font-size:12px;
-  letter-spacing:.08em;
-  cursor:pointer;
-}
-.button:hover { filter:brightness(1.15); }
-.button.secondary { background:#ffffff08; border-color:#ffffff35; }
-
-.status {
-  margin-top:25px;
-  color:#9e96ac;
-  font-size:11px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-}
-
-.section { padding:75px clamp(22px,9vw,140px); }
-.section-head {
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:25px;
-  margin-bottom:32px;
-}
-h2 {
-  font-family:var(--site-font-heading);
-  font-size:clamp(32px,5vw,54px);
-  margin-bottom:10px;
-}
-.section-head p { color:#a9a0b5; max-width:440px; line-height:1.7; }
-
-.platforms {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
-}
-.platform-card {
-  border:1px solid #ffffff20;
-  border-radius:12px;
-  padding:28px;
-  background:linear-gradient(145deg,#21142f,#100c17);
-  min-height:270px;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-}
-.platform-icon {
-  width:44px;
-  height:44px;
-  display:grid;
-  place-items:center;
-  border:1px solid #a78bfa80;
-  border-radius:10px;
-  margin-bottom:24px;
-  color:#ddd6fe;
-  font-size:22px;
-}
+.lead { max-width:520px; color:#c5bdcf; font-size:clamp(15px,1.5vw,18px); line-height:1.8; }
+.actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:34px; }
+.button { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:15px 22px; border:1px solid #a78bfa; border-radius:calc(6px * var(--site-radius-scale)); background:var(--site-primary); color:var(--site-on-primary); font-weight:800; font-size:12px; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:transform .2s,filter .2s,background .2s; }
+.button:hover { transform:translateY(-2px); filter:brightness(1.13); }
+.button.secondary { background:#ffffff08; border-color:#ffffff35; color:#f5f3ff; }
+.status { display:inline-flex; align-items:center; gap:8px; margin-top:28px; color:#9e96ac; font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
+.dot { width:7px; height:7px; border-radius:50%; background:#fbbf24; box-shadow:0 0 12px #fbbf2480; }
+.section { padding:86px clamp(22px,9vw,140px); }
+.section-head { display:flex; align-items:end; justify-content:space-between; gap:25px; margin-bottom:32px; }
+h2 { font-family:var(--site-font-heading); font-size:calc(clamp(32px,5vw,54px) * var(--site-heading-scale)); letter-spacing:-.035em; margin-bottom:10px; }
+.section-head p { color:#a9a0b5; max-width:440px; line-height:1.7; margin-bottom:0; }
+.platforms { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.platform-card { border:1px solid #ffffff20; border-radius:calc(12px * var(--site-radius-scale)); padding:28px; background:linear-gradient(145deg,#21142f,#100c17); min-height:220px; display:flex; flex-direction:column; align-items:flex-start; }
+.platform-icon { width:44px; height:44px; display:grid; place-items:center; border:1px solid #a78bfa80; border-radius:10px; margin-bottom:24px; color:#ddd6fe; font-size:22px; }
 .platform-card h3 { font-size:22px; margin-bottom:8px; }
 .platform-card p { color:#aaa0b8; line-height:1.65; font-size:14px; flex:1; }
-.platform-choice { margin:12px 0; }
-.platform-choice:disabled {
-  opacity:.4;
-  cursor:not-allowed;
-  filter:grayscale(.5);
-}
-.platform-card.platform-blocked { border-color:#ffffff12; }
-.platform-card.platform-blocked .platform-icon { opacity:.45; }
-.coming {
-  font-size:10px;
-  color:#fcd34d;
-  letter-spacing:.16em;
-  font-weight:800;
-  border:1px solid #fcd34d45;
-  padding:9px 12px;
-  border-radius:4px;
-}
-.platform-message {
-  min-height:1.5em;
-  margin-top:20px;
-  color:#c4b5fd;
-  font-size:13px;
-  line-height:1.6;
-}
-
-.play-section {
-  padding:72px clamp(20px,7vw,100px);
-  background:linear-gradient(180deg,#100a18,#08060c);
-  border-top:1px solid #a78bfa35;
-}
-.game-shell {
-  max-width:1000px;
-  margin:28px auto 0;
-  border:1px solid #a78bfa70;
-  border-radius:14px;
-  overflow:hidden;
-  background:#07060b;
-}
-.game-top {
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  padding:14px 18px;
-  background:#160e20;
-  color:#d8b4fe;
-  font-size:12px;
-}
-.game-scene {
-  min-height:340px;
-  position:relative;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  background:radial-gradient(ellipse at 50% 45%,#3a2450,#171020 35%,#050409 75%);
-}
-.corridor {
-  position:absolute;
-  width:70%;
-  height:100%;
-  background:linear-gradient(90deg,transparent 48%,#b794f455 49%,#100b18 50%,#b794f455 51%,transparent 52%);
-  clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);
-}
-.door {
-  position:absolute;
-  width:76px;
-  height:130px;
-  top:28%;
-  left:calc(50% - 38px);
-  border:2px solid #9f8bb8;
-  background:linear-gradient(90deg,#1b1424,#08060b);
-  display:grid;
-  place-items:center;
-  color:#fcd34d;
-  font-size:25px;
-}
-.clock {
-  position:absolute;
-  top:18px;
-  font-family:Georgia,serif;
-  font-size:30px;
-  color:#fca5a5;
-}
-.game-message {
-  position:absolute;
-  bottom:18px;
-  left:15px;
-  right:15px;
-  text-align:center;
-  color:#f5f3ff;
-  font-size:14px;
-}
-.game-controls {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  padding:16px;
-  justify-content:center;
-  background:#100b16;
-}
-.game-controls button {
-  border:1px solid #a78bfa80;
-  border-radius:6px;
-  background:#241631;
-  color:#f5f3ff;
-  padding:12px 16px;
-  font:inherit;
-  font-size:12px;
-  font-weight:800;
-  cursor:pointer;
-}
-.game-inventory {
-  padding:0 16px 16px;
-  background:#100b16;
-  color:#c4b5fd;
-  text-align:center;
-  font-size:13px;
-}
-
-.features {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
-}
-.feature { border-top:1px solid #a78bfa70; padding-top:22px; }
-.feature b {
-  display:block;
-  font-family:var(--site-font-heading);
-  font-size:23px;
-  margin-bottom:10px;
-  font-weight:500;
-}
+.coming { font-size:10px; color:#fcd34d; letter-spacing:.16em; font-weight:800; border:1px solid #fcd34d45; padding:9px 12px; border-radius:4px; }
+.features { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.feature { border-top:1px solid #a78bfa70; padding:22px 0 0; }
+.feature b { display:block; font-family:var(--site-font-heading); font-size:23px; margin-bottom:10px; font-weight:500; }
 .feature p { color:#a9a0b5; line-height:1.7; font-size:14px; }
-.quote {
-  text-align:center;
-  background:linear-gradient(180deg,#140b21,#09070d);
-  padding:72px 20px;
-}
-.quote p {
-  font-family:var(--site-font-heading);
-  font-style:italic;
-  font-size:clamp(25px,4vw,42px);
-}
-.quote span {
-  color:#c4b5fd;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  font-size:10px;
-}
-footer {
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  padding:26px clamp(20px,5vw,76px);
-  color:#81778d;
-  font-size:11px;
-}
-.modal-backdrop {
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:10;
-  background:#000b;
-  padding:20px;
-  align-items:center;
-  justify-content:center;
-}
+.quote { text-align:center; background:linear-gradient(180deg,#140b21,#09070d); padding:72px 20px; border-top:1px solid #ffffff10; border-bottom:1px solid #ffffff10; }
+.quote p { font-family:var(--site-font-heading); font-style:italic; font-size:clamp(25px,4vw,42px); max-width:780px; margin:0 auto 20px; }
+.quote span { color:#c4b5fd; letter-spacing:.22em; text-transform:uppercase; font-size:10px; }
+footer { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:26px clamp(20px,5vw,76px); color:#81778d; font-size:11px; }
+.modal-backdrop { display:none; position:fixed; inset:0; z-index:10; background:#000b; padding:20px; align-items:center; justify-content:center; }
 .modal-backdrop.open { display:flex; }
-.modal {
-  max-width:460px;
-  width:100%;
-  background:#160e20;
-  border:1px solid #a78bfa80;
-  padding:30px;
-  border-radius:12px;
-}
-.modal h3 { font-family:var(--site-font-heading); font-size:30px; }
+.modal { max-width:460px; width:100%; background:#160e20; border:1px solid #a78bfa80; padding:30px; border-radius:12px; box-shadow:0 25px 90px #000b; }
+.modal h3 { font-family:var(--site-font-heading); font-size:30px; margin-bottom:12px; }
 .modal p { color:#c5bdcf; line-height:1.7; }
-
-@media(max-width:700px) {
-  .nav a:not(.nav-download) { display:none; }
-  .section-head { display:block; }
-  .section-head p { margin-top:12px; }
-  .platforms,.features { grid-template-columns:1fr; }
-  footer { flex-direction:column; }
-}
-@media(prefers-reduced-motion:reduce) {
-  html { scroll-behavior:auto; }
-  * { transition:none !important; }
-}
+.modal-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:22px; }
+.play-section { padding:72px clamp(20px,7vw,100px); background:linear-gradient(180deg,#100a18,#08060c); border-top:1px solid #a78bfa35; }
+.game-shell { max-width:1000px; margin:28px auto 0; border:1px solid #a78bfa70; border-radius:14px; overflow:hidden; background:#07060b; box-shadow:0 20px 70px #0008; }
+.game-top { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:14px 18px; background:#160e20; color:#d8b4fe; font-size:12px; letter-spacing:.12em; }
+.game-scene { min-height:340px; position:relative; display:grid; place-items:center; overflow:hidden; background:radial-gradient(ellipse at 50% 45%,#3a2450 0,#171020 35%,#050409 75%); }
+.game-scene:before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#000 0 12%,transparent 12% 88%,#000 88%),linear-gradient(0deg,#030207 0 18%,transparent 18% 80%,#050409 80%); opacity:.8; }
+.corridor { position:absolute; width:70%; height:100%; background:linear-gradient(90deg,transparent 0 48%,#b794f455 49%,#100b18 50%,#b794f455 51%,transparent 52%),linear-gradient(0deg,#171020,#07060b); clip-path:polygon(35% 0,65% 0,100% 100%,0 100%); border-left:2px solid #8b5cf6; border-right:2px solid #8b5cf6; }
+.door { position:absolute; z-index:1; width:76px; height:130px; top:28%; left:calc(50% - 38px); border:2px solid #9f8bb8; background:linear-gradient(90deg,#1b1424,#08060b); box-shadow:0 0 22px #8b5cf655; display:grid; place-items:center; color:#fcd34d; font-size:25px; }
+.clock { position:absolute; z-index:2; top:18px; font-family:Georgia,serif; font-size:30px; color:#fca5a5; text-shadow:0 0 18px #ef4444; }
+.game-message { position:absolute; z-index:3; bottom:18px; left:15px; right:15px; text-align:center; color:#f5f3ff; font-size:14px; text-shadow:0 2px 8px #000; }
+.game-controls { display:flex; flex-wrap:wrap; gap:10px; padding:16px; justify-content:center; background:#100b16; }
+.game-controls button { border:1px solid #a78bfa80; border-radius:6px; background:#241631; color:#f5f3ff; padding:12px 16px; font:inherit; font-size:12px; font-weight:800; cursor:pointer; }
+.game-controls button:hover { background:#4c1d95; }
+.game-inventory { padding:0 16px 16px; background:#100b16; color:#c4b5fd; text-align:center; font-size:13px; }
+@media(max-width:700px) { .nav a:not(.nav-download) { display:none; } .hero { min-height:600px; } .hero::after { right:-5%; top:20%; width:65vw; opacity:.55; } .hero-content { position:relative; z-index:1; } .section-head { display:block; } .section-head p { margin-top:12px; } .platforms,.features { grid-template-columns:1fr; } .platform-card { min-height:200px; } footer { flex-direction:column; align-items:flex-start; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
 </style>
 </head>
-
 <body>
 <div id="app">
-
 <header class="site-header">
-  <a class="brand" href="#top">
-    <span class="brand-mark">MH✦</span>
-    <span>MIDNIGHT HOLLOW<br>STUDIOS</span>
-  </a>
-  <nav class="nav" aria-label="Main navigation">
-    <a href="#experience">THE EXPERIENCE</a>
-    <a href="#downloads">DOWNLOADS</a>
-    <a href="#about">ABOUT</a>
-    <a class="nav-download" href="#downloads">GET THE GAME ↗</a>
-  </nav>
+  <a class="brand" href="#top" aria-label="Midnight Hollow Studios home"><span class="brand-mark">MH<span style="color:#a78bfa">✦</span></span><span>MIDNIGHT HOLLOW<br>STUDIOS</span></a>
+  <nav class="nav" aria-label="Main navigation"><a href="#experience">THE EXPERIENCE</a><a href="#downloads">DOWNLOADS</a><a href="#about">ABOUT</a><a class="nav-download" href="#downloads" style="color:#ddd6fe;font-weight:800">GET THE GAME ↗</a></nav>
 </header>
-
 <main id="top">
 <section class="hero">
   <div class="hero-content">
     <div class="eyebrow">MIDNIGHT HOLLOW STUDIOS PRESENTS</div>
     <h1>THE NIGHT<br>IS NOT <span>OVER.</span></h1>
-    <p class="lead">
-      Enter a world of abandoned places, hidden secrets, and nightmares
-      that begin when the clock strikes 3 AM. An independent horror
-      experience from Midnight Hollow Studios.
-    </p>
-    <div class="actions">
-      <a class="button" href="#downloads">↓ DOWNLOAD FOR PC</a>
-      <a class="button secondary" href="#experience">EXPLORE THE GAME</a>
-    </div>
-    <div class="status">Independent PC build in development</div>
+    <p class="lead">Enter a world of abandoned places, hidden secrets, and nightmares that begin when the clock strikes 3 AM. An independent horror experience from Midnight Hollow Studios.</p>
+    <div class="actions"><a class="button" href="#downloads">↓ &nbsp; DOWNLOAD FOR PC</a><a class="button secondary" href="#experience">EXPLORE THE GAME</a></div>
+    <div class="status"><span class="dot"></span> Independent PC build in development</div>
   </div>
 </section>
-
 <section class="play-section" id="play">
-  <div class="eyebrow">Playable prototype</div>
-  <h2>THE FIRST NIGHT.</h2>
-  <p class="lead">
-    Explore the corridor, find three hidden keys, and unlock the exit.
-    This is a small browser prototype of 3 AM: Hall of Nightmares.
-  </p>
-
-  <div class="game-shell">
-    <div class="game-top">
-      <span>3 AM: HALL OF NIGHTMARES</span>
-      <span id="game-status">OBJECTIVE: FIND 3 KEYS</span>
-    </div>
-    <div class="game-scene">
-      <div class="corridor"></div>
-      <div class="clock">3:00 AM</div>
-      <div class="door" id="game-door">🔒</div>
-      <div class="game-message" id="game-message">
-        The hallway is cold and silent. Something flickers in the darkness...
-      </div>
-    </div>
-    <div class="game-controls">
-      <button type="button" id="look-left">← SEARCH LEFT</button>
-      <button type="button" id="look-center">LOOK AHEAD</button>
-      <button type="button" id="look-right">SEARCH RIGHT →</button>
-      <button type="button" id="use-door">TRY THE DOOR</button>
-      <button type="button" id="restart-game">RESTART</button>
-    </div>
-    <div class="game-inventory" id="game-inventory">Keys found: 0 / 3</div>
+  <div class="eyebrow">Playable prototype</div><h2>THE FIRST NIGHT.</h2>
+  <p class="lead">Explore the corridor, find three hidden keys, and unlock the exit. This is the first playable browser prototype of 3 AM: Hall of Nightmares.</p>
+  <div class="game-shell" aria-label="Playable horror game">
+    <div class="game-top"><span>3 AM: HALL OF NIGHTMARES</span><span id="game-status">OBIECTIV: GĂSEȘTE 3 CHEI</span></div>
+    <div class="game-scene"><div class="corridor"></div><div class="clock">3:00 AM</div><div class="door" id="game-door">🔒</div><div class="game-message" id="game-message">Holul este rece și liniștit. Ceva pâlpâie în întuneric...</div></div>
+    <div class="game-controls"><button type="button" id="look-left">← CAUTĂ ÎN STÂNGA</button><button type="button" id="look-center">PRIVEȘTE ÎNAINTE</button><button type="button" id="look-right">CAUTĂ ÎN DREAPTA →</button><button type="button" id="use-door">ÎNCEARCĂ UȘA</button><button type="button" id="restart-game">REIA JOCUL</button></div>
+    <div class="game-inventory" id="game-inventory">Chei găsite: 0 / 3</div>
   </div>
 </section>
-
 <section class="section" id="downloads">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">Choose your platform</div>
-      <h2>ENTER THE NIGHT.</h2>
-    </div>
-    <p>
-      The standalone Windows and macOS versions are not available yet.
-      Only the option matching your detected operating system can be selected.
-    </p>
-  </div>
-
+  <div class="section-head"><div><div class="eyebrow">Choose your platform</div><h2>ENTER THE NIGHT.</h2></div><p>The standalone Windows and macOS versions are not available yet. Download buttons will be activated when tested game builds are ready.</p></div>
   <div class="platforms">
-    <article class="platform-card" id="windows-card">
-      <div class="platform-icon">▣</div>
-      <h3>Windows PC</h3>
-      <p>For Windows desktop and laptop players.</p>
-      <button class="button platform-choice" id="play-windows" type="button">
-        PLAY ON WINDOWS
-      </button>
-      <span class="coming">INSTALLER COMING SOON</span>
-    </article>
-
-    <article class="platform-card" id="mac-card">
-      <div class="platform-icon">⌘</div>
-      <h3>MacBook / macOS</h3>
-      <p>For compatible Mac computers.</p>
-      <button class="button platform-choice" id="play-mac" type="button">
-        PLAY ON MAC
-      </button>
-      <span class="coming">MAC APP COMING SOON</span>
-    </article>
+    <article class="platform-card"><div class="platform-icon">▣</div><h3>Windows PC</h3><p>For Windows desktop and laptop players. Installer and system requirements will appear here when the build is ready.</p><span class="coming">COMING SOON</span></article>
+    <article class="platform-card"><div class="platform-icon">⌘</div><h3>macOS</h3><p>For compatible Mac computers. A tested Mac build and installation instructions will be published here when available.</p><span class="coming">COMING SOON</span></article>
   </div>
-
-  <p class="platform-message" id="platform-message" role="status" aria-live="polite"></p>
 </section>
-
 <section class="section" id="experience" style="background:#0e0a14">
-  <div class="eyebrow">What awaits you</div>
-  <h2>EVERY DOOR HIDES A STORY.</h2>
-  <div class="features">
-    <div class="feature">
-      <b>Explore the unknown</b>
-      <p>Walk through abandoned halls, strange stations, and places where nothing feels quite right.</p>
-    </div>
-    <div class="feature">
-      <b>Find the clues</b>
-      <p>Pay attention to details. Hidden rooms and mysterious symbols may reveal more than they seem.</p>
-    </div>
-    <div class="feature">
-      <b>Survive 3 AM</b>
-      <p>A quiet atmosphere, unsettling sounds, and mysteries that connect each nightmare.</p>
-    </div>
-  </div>
+  <div class="eyebrow">What awaits you</div><h2>EVERY DOOR HIDES A STORY.</h2>
+  <div class="features"><div class="feature"><b>Explore the unknown</b><p>Walk through abandoned halls, strange stations, and places where nothing feels quite right.</p></div><div class="feature"><b>Find the clues</b><p>Pay attention to details. Hidden rooms and mysterious symbols may reveal more than they seem.</p></div><div class="feature"><b>Survive 3 AM</b><p>A quiet atmosphere, unsettling sounds, and mysteries that connect each nightmare.</p></div></div>
 </section>
-
-<section class="quote" id="about">
-  <p>“Some doors should never be opened after 3 AM.”</p>
-  <span>3 AM: Hall of Nightmares</span>
-</section>
+<section class="quote" id="about"><p>“Some doors should never be opened after 3 AM.”</p><span>3 AM: Hall of Nightmares</span></section>
 </main>
-
-<footer>
-  <span>© 2026 MIDNIGHT HOLLOW STUDIOS</span>
-  <span>Official studio website · Downloads not yet available</span>
-</footer>
+<footer><span>© 2026 MIDNIGHT HOLLOW STUDIOS</span><span>Official studio website concept · Downloads not yet available</span></footer>
 </div>
-
+<div class="modal-backdrop" id="notice" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal"><div class="eyebrow">Transmission received</div><h3 id="modal-title">The download is not ready.</h3><p>The standalone game builds have not been compiled yet. This website is a prototype, so no installer is being downloaded. Check back when the Windows or macOS version is ready.</p><div class="modal-actions"><button class="button" id="close-modal">UNDERSTOOD</button></div></div>
+</div>
 <script>
-/* Detectează sistemul de operare al vizitatorului. */
-function detectOperatingSystem() {
-  const ua = navigator.userAgent || "";
-  const platform =
-    navigator.userAgentData && navigator.userAgentData.platform
-      ? navigator.userAgentData.platform
-      : (navigator.platform || "");
-
-  if (/Windows/i.test(ua) || /Win/i.test(platform)) return "windows";
-  if (/Macintosh|Mac OS X/i.test(ua) || /Mac/i.test(platform)) return "mac";
-
-  return "unknown";
-}
-
-const visitorOS = detectOperatingSystem();
-const windowsButton = document.getElementById("play-windows");
-const macButton = document.getElementById("play-mac");
-const windowsCard = document.getElementById("windows-card");
-const macCard = document.getElementById("mac-card");
-const platformMessage = document.getElementById("platform-message");
-
-if (visitorOS === "windows") {
-  macButton.disabled = true;
-  macButton.textContent = "MAC ONLY";
-  macCard.classList.add("platform-blocked");
-  platformMessage.textContent =
-    "Windows detected. The Mac option is disabled on this device.";
-} else if (visitorOS === "mac") {
-  windowsButton.disabled = true;
-  windowsButton.textContent = "WINDOWS ONLY";
-  windowsCard.classList.add("platform-blocked");
-  platformMessage.textContent =
-    "macOS detected. The Windows option is disabled on this device.";
-} else {
-  platformMessage.textContent =
-    "We couldn't detect your operating system. Installable versions aren't available yet.";
-}
-
-function handlePlatformClick(platform) {
-  if (visitorOS === "unknown") {
-    platformMessage.textContent =
-      "Access refused: your operating system could not be detected.";
-    return;
-  }
-
-  if (visitorOS !== platform) {
-    platformMessage.textContent =
-      "Access refused: this option is not intended for your operating system.";
-    return;
-  }
-
-  if (platform === "windows") {
-    platformMessage.textContent =
-      "The Windows installer is not available yet.";
-  } else {
-    platformMessage.textContent =
-      "The macOS app is not available yet.";
-  }
-}
-
-windowsButton.addEventListener("click", () => handlePlatformClick("windows"));
-macButton.addEventListener("click", () => handlePlatformClick("mac"));
-
-/* Prototipul jucabil din browser. */
+const modal = document.getElementById('notice');
+document.querySelectorAll('a[href="#downloads"]').forEach(link => link.addEventListener('click', () => { /* The section is available; no fake download is triggered. */ }));
+document.querySelectorAll('.platform-card').forEach(card => card.addEventListener('click', () => { modal.classList.add('open'); }));
+document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('open'));
+modal.addEventListener('click', event => { if (event.target === modal) modal.classList.remove('open'); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape') modal.classList.remove('open'); });
 const gameKeys = new Set();
 let gameWon = false;
-
-const gameMessage = document.getElementById("game-message");
-const gameInventory = document.getElementById("game-inventory");
-const gameStatus = document.getElementById("game-status");
-const gameDoor = document.getElementById("game-door");
-
+const gameMessage = document.getElementById('game-message');
+const gameInventory = document.getElementById('game-inventory');
+const gameStatus = document.getElementById('game-status');
+const gameDoor = document.getElementById('game-door');
 function searchGame(direction) {
   if (gameWon) return;
-
-  if (gameKeys.has(direction)) {
-    gameMessage.textContent = "You already searched here. Try another direction.";
-    return;
-  }
-
+  if (gameKeys.has(direction)) { gameMessage.textContent = 'Ai verificat deja acest loc. Încearcă altă direcție.'; return; }
   gameKeys.add(direction);
-
-  const clues = {
-    left: "You find a cold key beneath an old desk.",
-    center: "A key glimmers beside the stopped clock.",
-    right: "You find the last key in a dark corner."
-  };
-
-  gameMessage.textContent = clues[direction];
-  gameInventory.textContent = "Keys found: " + gameKeys.size + " / 3";
-
-  if (gameKeys.size === 3) {
-    gameStatus.textContent = "OBJECTIVE: OPEN THE DOOR";
-    gameDoor.textContent = "🔑";
-  } else {
-    gameStatus.textContent = "SEARCH FOR THE HIDDEN KEYS";
-  }
+  const found = gameKeys.size <= 3;
+  gameMessage.textContent = found ? ({left:'Sub o bancă veche găsești o cheie rece.',center:'O cheie strălucește lângă ceasul oprit.',right:'Într-un colț întunecat găsești ultima cheie.'})[direction] : 'Nu mai este nimic aici.';
+  gameInventory.textContent = 'Chei găsite: ' + gameKeys.size + ' / 3';
+  gameStatus.textContent = gameKeys.size === 3 ? 'OBIECTIV: DESCHIDE UȘA' : 'CAUTĂ CHEILE ASCUNSE';
+  if (gameKeys.size === 3) gameDoor.textContent = '🔑';
 }
-
-document.getElementById("look-left").addEventListener("click", () => searchGame("left"));
-document.getElementById("look-center").addEventListener("click", () => searchGame("center"));
-document.getElementById("look-right").addEventListener("click", () => searchGame("right"));
-
-document.getElementById("use-door").addEventListener("click", () => {
-  if (gameKeys.size < 3) {
-    gameMessage.textContent =
-      "The door is locked. You need " + (3 - gameKeys.size) + " more key(s).";
-    return;
-  }
-
-  gameWon = true;
-  gameDoor.textContent = "🚪";
-  gameMessage.textContent = "The door slowly opens... YOU ESCAPED THE FIRST NIGHT!";
-  gameStatus.textContent = "LEVEL COMPLETE";
+document.getElementById('look-left').addEventListener('click', () => searchGame('left'));
+document.getElementById('look-center').addEventListener('click', () => searchGame('center'));
+document.getElementById('look-right').addEventListener('click', () => searchGame('right'));
+document.getElementById('use-door').addEventListener('click', () => {
+  if (gameKeys.size < 3) gameMessage.textContent = 'Ușa este încuiată. Mai ai nevoie de ' + (3 - gameKeys.size) + ' chei.';
+  else { gameWon = true; gameDoor.textContent = '🚪'; gameMessage.textContent = 'Ușa se deschide încet... AI SCĂPAT DIN PRIMA NOAPTE!'; gameStatus.textContent = 'NIVEL COMPLETAT'; }
 });
-
-document.getElementById("restart-game").addEventListener("click", () => {
-  gameKeys.clear();
-  gameWon = false;
-  gameDoor.textContent = "🔒";
-  gameStatus.textContent = "OBJECTIVE: FIND 3 KEYS";
-  gameInventory.textContent = "Keys found: 0 / 3";
-  gameMessage.textContent =
-    "The hallway is cold and silent. Something flickers in the darkness...";
+document.getElementById('restart-game').addEventListener('click', () => {
+  gameKeys.clear(); gameWon = false; gameDoor.textContent = '🔒'; gameStatus.textContent = 'OBIECTIV: GĂSEȘTE 3 CHEI'; gameInventory.textContent = 'Chei găsite: 0 / 3'; gameMessage.textContent = 'Holul este rece și liniștit. Ceva pâlpâie în întuneric...';
 });
 </script>
 </body>
 </html>
-```
