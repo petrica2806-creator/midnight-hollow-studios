@@ -1,11 +1,12 @@
+
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2321142f'/%3E%3Ctext x='5' y='42' font-size='27' font-weight='bold' fill='%23d8b4fe'%3EMH%3C/text%3E%3Ctext x='43' y='19' font-size='18' fill='%23a78bfa'%3E✦%3C/text%3E%3C/svg%3E">
-<meta name="google-site-verification" content="YhWY70b4UhAL1OIK3-jRuiGUgcE77YO38UfXHybEaDE" />
+<meta name="google-site-verification" content="YhWY70b4UhAL1OIK3-jRuiGUgcE77YO38UfXHybEaDE">
 <title>Midnight Hollow Studios — Official Site</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2321142f'/%3E%3Ctext x='32' y='39' font-size='23' font-weight='bold' text-anchor='middle' fill='%23d8b4fe'%3EMH%3C/text%3E%3C/svg%3E">
 <style>
 :root {
   --site-primary: #6d28d9;
@@ -151,8 +152,7 @@ function searchGame(direction) {
   if (gameWon) return;
   if (gameKeys.has(direction)) { gameMessage.textContent = 'Ai verificat deja acest loc. Încearcă altă direcție.'; return; }
   gameKeys.add(direction);
-  const found = gameKeys.size <= 3;
-  gameMessage.textContent = found ? ({left:'Sub o bancă veche găsești o cheie rece.',center:'O cheie strălucește lângă ceasul oprit.',right:'Într-un colț întunecat găsești ultima cheie.'})[direction] : 'Nu mai este nimic aici.';
+  gameMessage.textContent = ({left:'Sub o bancă veche găsești o cheie rece.',center:'O cheie strălucește lângă ceasul oprit.',right:'Într-un colț întunecat găsești ultima cheie.'})[direction];
   gameInventory.textContent = 'Chei găsite: ' + gameKeys.size + ' / 3';
   gameStatus.textContent = gameKeys.size === 3 ? 'OBIECTIV: DESCHIDE UȘA' : 'CAUTĂ CHEILE ASCUNSE';
   if (gameKeys.size === 3) gameDoor.textContent = '🔑';
