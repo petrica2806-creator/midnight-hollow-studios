@@ -1,523 +1,225 @@
-```html
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Midnight Hollow Studios — Official Site</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midnight Hollow Studios</title>
 
 <style>
-:root {
-  --site-primary: #6d28d9;
-  --site-background: #09070d;
-  --site-text: #f7f2fb;
-  --site-muted: #c5bdcf;
-  --site-accent: #c4b5fd;
+* {
+  box-sizing: border-box;
 }
 
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  background: var(--site-background);
-  color: var(--site-text);
-  font-family: Inter, system-ui, Arial, sans-serif;
+  background: #09070d;
+  color: #f7f2fb;
+  font-family: Arial, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button, textarea { font: inherit; }
-
-.site-header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding: 22px clamp(20px, 5vw, 76px);
-  border-bottom: 1px solid #ffffff1c;
-  background: #09070de8;
+  padding: 22px 7%;
+  background: #100a18;
+  border-bottom: 1px solid #39234f;
 }
 
-.brand {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .14em;
-}
-
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid #a78bfa;
+.logo {
   color: #d8b4fe;
-  border-radius: 50%;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-size: 12px;
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 13px;
 }
 
-.nav a:hover { color: var(--site-accent); }
+nav a:hover {
+  color: #c4b5fd;
+}
 
 .hero {
   min-height: 620px;
-  display: grid;
+  padding: 110px 9%;
+  display: flex;
   align-items: center;
-  padding: 80px clamp(22px, 9vw, 140px);
   background:
-    radial-gradient(ellipse at 75% 45%, #51208a66, transparent 35%),
-    linear-gradient(110deg, #09070d, #100a1b 60%, #09070d);
+    radial-gradient(ellipse at 80% 45%, #51208a70, transparent 40%),
+    linear-gradient(120deg, #09070d, #180d25, #09070d);
 }
 
-.hero-content { max-width: 700px; }
+.hero-content {
+  max-width: 720px;
+}
 
 .eyebrow {
-  color: var(--site-accent);
-  letter-spacing: .22em;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-bottom: 18px;
+  color: #c4b5fd;
+  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: bold;
 }
-
-h1, h2, h3, p { margin-top: 0; }
 
 h1 {
   font-family: Georgia, serif;
   font-size: clamp(48px, 8vw, 100px);
   line-height: .95;
-  letter-spacing: -.05em;
-  margin-bottom: 24px;
+  margin: 25px 0;
 }
 
 h1 span {
-  display: block;
-  color: var(--site-accent);
+  color: #c4b5fd;
   font-style: italic;
 }
 
-.lead {
-  max-width: 540px;
-  color: var(--site-muted);
+p {
+  color: #c5bdcf;
   line-height: 1.8;
 }
 
-.actions {
+.hero p {
+  max-width: 520px;
+  font-size: 17px;
+}
+
+.buttons {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 14px;
   margin-top: 30px;
 }
 
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 20px;
-  border: 1px solid #a78bfa;
-  border-radius: 6px;
-  background: var(--site-primary);
+  display: inline-block;
+  padding: 15px 22px;
+  background: #6d28d9;
   color: white;
-  font-weight: 800;
+  text-decoration: none;
   font-size: 12px;
-  letter-spacing: .08em;
-  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 1px solid #a78bfa;
+  border-radius: 5px;
+  transition: .2s;
 }
 
-.button:hover { filter: brightness(1.2); }
+.button:hover {
+  transform: translateY(-3px);
+  background: #7c3aed;
+}
 
 .button.secondary {
-  background: #ffffff08;
-  border-color: #ffffff35;
+  background: transparent;
+  border-color: #766582;
 }
 
-.status {
-  margin-top: 26px;
-  color: #aaa0b8;
-  font-size: 11px;
-  letter-spacing: .1em;
-}
-
-.dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: #fbbf24;
-}
-
-.section {
-  padding: 76px clamp(22px, 9vw, 140px);
-}
-
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 25px;
-  margin-bottom: 32px;
+section.content {
+  padding: 80px 9%;
 }
 
 h2 {
   font-family: Georgia, serif;
   font-size: clamp(32px, 5vw, 54px);
-  letter-spacing: -.035em;
-  margin-bottom: 12px;
 }
 
-.section-head p {
-  max-width: 440px;
-  color: #a9a0b5;
-  line-height: 1.7;
-}
-
-.platforms {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.platform-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 28px;
-  min-height: 220px;
-  border: 1px solid #ffffff20;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #21142f, #100c17);
-}
-
-.platform-icon {
-  font-size: 25px;
-  margin-bottom: 20px;
-}
-
-.platform-card p {
-  color: #aaa0b8;
-  line-height: 1.7;
-  font-size: 14px;
-}
-
-.coming {
-  color: #fcd34d;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .15em;
-}
-
-.features {
+.cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+  margin-top: 35px;
 }
 
-.feature {
-  border-top: 1px solid #a78bfa70;
-  padding-top: 22px;
-}
-
-.feature b {
-  display: block;
-  font-family: Georgia, serif;
-  font-size: 23px;
-  margin-bottom: 10px;
-}
-
-.feature p {
-  color: #a9a0b5;
-  line-height: 1.7;
-  font-size: 14px;
-}
-
-/* Browser game */
-
-.play-section {
-  padding: 72px clamp(20px, 7vw, 100px);
-  background: linear-gradient(180deg, #100a18, #08060c);
-  border-top: 1px solid #a78bfa35;
-}
-
-.game-shell {
-  max-width: 1000px;
-  margin: 28px auto 0;
-  border: 1px solid #a78bfa70;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #07060b;
-}
-
-.game-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 14px 18px;
-  background: #160e20;
-  color: #d8b4fe;
-  font-size: 12px;
-  letter-spacing: .08em;
-}
-
-.game-scene {
-  min-height: 340px;
-  position: relative;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  background: radial-gradient(ellipse, #3a2450, #171020 45%, #050409 80%);
-}
-
-.corridor {
-  position: absolute;
-  width: 70%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent 48%, #b794f455 49%, #100b18 50%, #b794f455 51%, transparent 52%);
-  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
-}
-
-.door {
-  position: absolute;
-  width: 76px;
-  height: 130px;
-  top: 28%;
-  left: calc(50% - 38px);
-  border: 2px solid #9f8bb8;
-  background: linear-gradient(90deg, #1b1424, #08060b);
-  display: grid;
-  place-items: center;
-  color: #fcd34d;
-  font-size: 25px;
-}
-
-.clock {
-  position: absolute;
-  top: 18px;
-  font-family: Georgia, serif;
-  font-size: 30px;
-  color: #fca5a5;
-  text-shadow: 0 0 18px #ef4444;
-}
-
-.game-message {
-  position: absolute;
-  bottom: 18px;
-  left: 15px;
-  right: 15px;
-  text-align: center;
-  color: white;
-  font-size: 14px;
-}
-
-.game-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 16px;
-  justify-content: center;
-  background: #100b16;
-}
-
-.game-controls button,
-.rating-buttons button {
-  border: 1px solid #a78bfa80;
-  border-radius: 6px;
-  background: #241631;
-  color: #f5f3ff;
-  padding: 12px 14px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.game-controls button:hover,
-.rating-buttons button:hover {
-  background: #4c1d95;
-}
-
-.game-inventory {
-  padding: 0 16px 16px;
-  background: #100b16;
-  color: #c4b5fd;
-  text-align: center;
-  font-size: 13px;
-}
-
-/* About and feedback */
-
-#about {
-  background: linear-gradient(180deg, #140b21, #09070d);
-}
-
-.about-copy {
-  max-width: 900px;
-  margin: 28px auto 0;
-  color: #c5bdcf;
-  line-height: 1.85;
-}
-
-.about-copy > p { margin-bottom: 22px; }
-
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin: 32px 0;
-}
-
-.about-card {
-  padding: 22px;
+.card {
+  padding: 26px;
+  background: linear-gradient(145deg, #21142f, #100c17);
   border: 1px solid #ffffff20;
   border-radius: 10px;
-  background: linear-gradient(145deg, #21142f, #100c17);
 }
 
-.about-card h3 {
-  color: #f7f2fb;
-  margin-bottom: 10px;
-  font-size: 18px;
+.card h3 {
+  color: #e9d5ff;
 }
 
-.about-card p {
-  color: #aaa0b8;
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 0;
+.roblox-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #160e20, #09070d);
+  border-top: 1px solid #ffffff15;
+  border-bottom: 1px solid #ffffff15;
+}
+
+.roblox-section p {
+  max-width: 600px;
+  margin: 0 auto 25px;
 }
 
 .quote {
   text-align: center;
-  padding: 45px 20px;
-  border-top: 1px solid #ffffff10;
-  border-bottom: 1px solid #ffffff10;
+  padding: 75px 20px;
 }
 
 .quote p {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: clamp(25px, 4vw, 42px);
-  margin-bottom: 20px;
-}
-
-.quote span {
-  color: #c4b5fd;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  font-size: 10px;
-}
-
-.feedback {
-  margin-top: 42px;
-  padding: 28px;
-  border: 1px solid #a78bfa55;
-  border-radius: 12px;
-  background: #100b16;
-}
-
-.feedback h3 {
-  margin: 14px 0 10px;
-  color: #f7f2fb;
-  font-size: 24px;
-}
-
-.feedback > p {
-  color: #aaa0b8;
-  line-height: 1.7;
-}
-
-.rating-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0 24px;
-}
-
-.rating-buttons button[aria-pressed="true"] {
-  background: #6d28d9;
-  border-color: #c4b5fd;
-  box-shadow: 0 0 0 2px #a78bfa30;
-}
-
-.feedback label {
-  display: block;
-  margin-bottom: 9px;
   color: #e9d5ff;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.feedback textarea {
-  display: block;
-  width: 100%;
-  min-height: 120px;
-  resize: vertical;
-  margin-bottom: 18px;
-  padding: 14px;
-  border: 1px solid #ffffff30;
-  border-radius: 7px;
-  background: #09070d;
-  color: #f7f2fb;
-  line-height: 1.6;
-}
-
-.feedback textarea:focus {
-  outline: 2px solid #a78bfa;
-  outline-offset: 2px;
-}
-
-#feedback-result {
-  margin: 14px 0 0;
-  font-size: 13px;
-  color: #c4b5fd;
+  font-family: Georgia, serif;
+  font-size: clamp(24px, 4vw, 40px);
+  font-style: italic;
 }
 
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 26px clamp(20px, 5vw, 76px);
+  padding: 28px 7%;
+  border-top: 1px solid #ffffff15;
   color: #81778d;
-  font-size: 11px;
+  font-size: 12px;
+  text-align: center;
 }
 
 @media (max-width: 700px) {
-  .nav { gap: 10px; font-size: 10px; }
-  .hero { min-height: 560px; }
-  .section-head { display: block; }
-  .platforms, .features, .about-grid { grid-template-columns: 1fr; }
-  .feedback { padding: 20px; }
-  footer { flex-direction: column; align-items: flex-start; }
+  header {
+    align-items: flex-start;
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  nav a {
+    margin: 0 12px 0 0;
+  }
+
+  .hero {
+    padding: 80px 7%;
+    min-height: 560px;
+  }
+
+  section.content {
+    padding: 60px 7%;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
 
 <body>
-<div id="app">
 
-<header class="site-header">
-  <a class="brand" href="#top" aria-label="Midnight Hollow Studios home">
-    <span class="brand-mark">MH✦</span>
-    <span>MIDNIGHT HOLLOW<br>STUDIOS</span>
+<header>
+  <a class="logo" href="#top" style="text-decoration:none">
+    MIDNIGHT HOLLOW STUDIOS
   </a>
 
-  <nav class="nav" aria-label="Main navigation">
-    <a href="#experience">THE EXPERIENCE</a>
-    <a href="#downloads">DOWNLOADS</a>
+  <nav>
+    <a href="#game">THE GAME</a>
+    <a href="#experience">EXPERIENCE</a>
     <a href="#about">ABOUT</a>
-    <a href="#downloads">GET THE GAME ↗</a>
   </nav>
 </header>
 
@@ -526,291 +228,108 @@ footer {
 <section class="hero">
   <div class="hero-content">
     <div class="eyebrow">MIDNIGHT HOLLOW STUDIOS PRESENTS</div>
-    <h1>THE NIGHT<br>IS NOT <span>OVER.</span></h1>
-    <p class="lead">
-      Enter a world of abandoned places, hidden secrets, and nightmares
-      that begin when the clock strikes 3 AM. An independent horror
-      experience from Midnight Hollow Studios.
+
+    <h1>
+      THE NIGHT<br>
+      IS NOT <span>OVER.</span>
+    </h1>
+
+    <p>
+      Enter a world of abandoned places, hidden secrets,
+      and nightmares that begin when the clock strikes 3 AM.
+      Are you ready to enter the darkness?
     </p>
-    <div class="actions">
-      <a class="button" href="#downloads">↓ DOWNLOAD FOR PC</a>
-      <a class="button secondary" href="#experience">EXPLORE THE GAME</a>
+
+    <div class="buttons">
+      <a
+        class="button"
+        href="https://www.roblox.com/share?code=0f54c43697cc4a45999e2c131f2f412f&type=ExperienceDetails&stamp=1793121240712"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ▶ PLAY ON ROBLOX
+      </a>
+
+      <a class="button secondary" href="#experience">
+        EXPLORE THE GAME
+      </a>
     </div>
-    <div class="status"><span class="dot"></span> Independent PC build in development</div>
   </div>
 </section>
 
-<section class="play-section" id="play">
-  <div class="eyebrow">Playable prototype</div>
-  <h2>THE FIRST NIGHT.</h2>
-  <p class="lead">
-    Explore the corridor, find three hidden keys, and unlock the exit.
-    This is a small browser prototype of 3 AM: Hall of Nightmares.
+<section class="roblox-section" id="game">
+  <div class="eyebrow">YOUR NEXT NIGHTMARE</div>
+  <h2>3 AM: HALL OF NIGHTMARES</h2>
+
+  <p>
+    Step into the unknown. Explore mysterious locations,
+    discover hidden secrets, and find a way to escape.
+    Every door leads somewhere you might regret entering.
   </p>
 
-  <div class="game-shell" aria-label="Playable horror game">
-    <div class="game-top">
-      <span>3 AM: HALL OF NIGHTMARES</span>
-      <span id="game-status">OBJECTIVE: FIND 3 KEYS</span>
-    </div>
-
-    <div class="game-scene">
-      <div class="corridor"></div>
-      <div class="clock">3:00 AM</div>
-      <div class="door" id="game-door">🔒</div>
-      <div class="game-message" id="game-message">
-        The hallway is cold and quiet. Something flickers in the darkness...
-      </div>
-    </div>
-
-    <div class="game-controls">
-      <button type="button" id="look-left">← SEARCH LEFT</button>
-      <button type="button" id="look-center">LOOK AHEAD</button>
-      <button type="button" id="look-right">SEARCH RIGHT →</button>
-      <button type="button" id="use-door">TRY THE DOOR</button>
-      <button type="button" id="restart-game">RESTART</button>
-    </div>
-
-    <div class="game-inventory" id="game-inventory">Keys found: 0 / 3</div>
-  </div>
+  <a
+    class="button"
+    href="https://www.roblox.com/share?code=0f54c43697cc4a45999e2c131f2f412f&type=ExperienceDetails&stamp=1793121240712"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    PLAY THE GAME NOW ↗
+  </a>
 </section>
 
-<section class="section" id="downloads">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">Choose your platform</div>
-      <h2>ENTER THE NIGHT.</h2>
-    </div>
-    <p>
-      The standalone Windows and macOS versions are not available yet.
-      Download buttons will be activated when tested game builds are ready.
-    </p>
-  </div>
-
-  <div class="platforms">
-    <article class="platform-card">
-      <div class="platform-icon">▣</div>
-      <h3>Windows PC</h3>
-      <p>Installer and system requirements will appear here when the build is ready.</p>
-      <span class="coming">COMING SOON</span>
-    </article>
-
-    <article class="platform-card">
-      <div class="platform-icon">⌘</div>
-      <h3>macOS</h3>
-      <p>A tested Mac build and installation instructions will be published here when available.</p>
-      <span class="coming">COMING SOON</span>
-    </article>
-  </div>
-</section>
-
-<section class="section" id="experience" style="background:#0e0a14">
-  <div class="eyebrow">What awaits you</div>
+<section class="content" id="experience">
+  <div class="eyebrow">WHAT AWAITS YOU</div>
   <h2>EVERY DOOR HIDES A STORY.</h2>
 
-  <div class="features">
-    <div class="feature">
-      <b>Explore the unknown</b>
-      <p>Walk through abandoned halls, strange stations, and places where nothing feels quite right.</p>
-    </div>
-    <div class="feature">
-      <b>Find the clues</b>
-      <p>Pay attention to details. Hidden rooms and mysterious symbols may reveal more than they seem.</p>
-    </div>
-    <div class="feature">
-      <b>Survive 3 AM</b>
-      <p>A quiet atmosphere, unsettling sounds, and mysteries that connect each nightmare.</p>
-    </div>
+  <div class="cards">
+    <article class="card">
+      <h3>Explore the Unknown</h3>
+      <p>
+        Walk through abandoned halls, strange stations,
+        and places where nothing feels quite right.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Discover Secrets</h3>
+      <p>
+        Search for clues, hidden rooms, mysterious symbols,
+        and secrets buried deep in the darkness.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Survive 3 AM</h3>
+      <p>
+        Keep your courage. The clock is ticking,
+        and your nightmare is only beginning.
+      </p>
+    </article>
   </div>
 </section>
 
-<section class="section" id="about">
-  <div class="eyebrow">THE STORY BEHIND THE FEAR</div>
-  <h2>ABOUT THE GAME.</h2>
+<section class="content" id="about">
+  <div class="eyebrow">ABOUT THE STUDIO</div>
+  <h2>MIDNIGHT HOLLOW STUDIOS</h2>
 
-  <div class="about-copy">
-    <p>
-      <strong>3 AM: Hall of Nightmares</strong> is a horror experience
-      built around one unsettling hour: 3:00 AM. Explore abandoned
-      places, discover hidden clues, unlock mysterious doors and
-      uncover the secrets behind every nightmare.
-    </p>
+  <p>
+    Midnight Hollow Studios creates mysterious horror experiences
+    built around exploration, atmosphere, and unforgettable
+    nightmares. Our goal is to make every player wonder
+    what is waiting behind the next door.
+  </p>
+</section>
 
-    <p>
-      Every nightmare has its own atmosphere and challenge. Explore
-      the Changing House, escape the Abandoned Station and discover
-      the secrets of the Hotel with 13 Floors. Search for keys,
-      investigate strange rooms and find a way out before the
-      nightmare traps you forever.
-    </p>
-
-    <div class="about-grid">
-      <article class="about-card">
-        <h3>Explore the unknown</h3>
-        <p>Discover abandoned locations, dark corridors and mysterious places.</p>
-      </article>
-
-      <article class="about-card">
-        <h3>Search for clues</h3>
-        <p>Find hidden keys, unlock doors and discover secret rooms.</p>
-      </article>
-
-      <article class="about-card">
-        <h3>Escape the nightmare</h3>
-        <p>Solve challenges, explore carefully and try to reach the exit.</p>
-      </article>
-    </div>
-
-    <p>
-      Created by <strong>Midnight Hollow Studios</strong>, this project
-      focuses on atmospheric horror, exploration and mysterious stories.
-      Every detail may hide a clue, and every door may lead somewhere
-      unexpected.
-    </p>
-
-    <div class="quote">
-      <p>“Some doors should never be opened after 3 AM.”</p>
-      <span>3 AM: Hall of Nightmares</span>
-    </div>
-
-    <form class="feedback" id="game-feedback">
-      <div class="eyebrow">YOUR THOUGHTS MATTER</div>
-      <h3>DID YOU ENJOY THE GAME?</h3>
-      <p>
-        Tell us what you thought about the game and what you would
-        like to see in a future update!
-      </p>
-
-      <div class="rating-buttons">
-        <button type="button" data-rating="Loved it" aria-pressed="false">
-          Loved it ✦
-        </button>
-        <button type="button" data-rating="It was scary" aria-pressed="false">
-          It was scary 👁
-        </button>
-        <button type="button" data-rating="Needs more" aria-pressed="false">
-          Needs more
-        </button>
-      </div>
-
-      <label for="feedback-message">What was your favourite part?</label>
-      <textarea id="feedback-message" maxlength="1000"
-        placeholder="Write your feedback here..."></textarea>
-
-      <button class="button" type="submit">SUBMIT FEEDBACK</button>
-
-      <p id="feedback-result" role="status" aria-live="polite">
-        Choose a reaction or write a comment.
-      </p>
-    </form>
-  </div>
+<section class="quote">
+  <p>“Some doors should never be opened after 3 AM.”</p>
+  <div class="eyebrow">3 AM: HALL OF NIGHTMARES</div>
 </section>
 
 </main>
 
 <footer>
-  <span>© 2026 MIDNIGHT HOLLOW STUDIOS</span>
-  <span>Official studio website concept · Downloads not yet available</span>
+  © 2026 MIDNIGHT HOLLOW STUDIOS · ALL RIGHTS RESERVED
 </footer>
-</div>
 
-<script>
-/* Browser game prototype */
-const gameKeys = new Set();
-let gameWon = false;
-
-const gameMessage = document.getElementById('game-message');
-const gameInventory = document.getElementById('game-inventory');
-const gameStatus = document.getElementById('game-status');
-const gameDoor = document.getElementById('game-door');
-
-function searchGame(direction) {
-  if (gameWon) return;
-
-  if (gameKeys.has(direction)) {
-    gameMessage.textContent = 'You already searched this place. Try another direction.';
-    return;
-  }
-
-  gameKeys.add(direction);
-
-  const messages = {
-    left: 'Under an old desk, you find a cold key.',
-    center: 'A key glimmers beside the stopped clock.',
-    right: 'In a dark corner, you find the final key.'
-  };
-
-  gameMessage.textContent = messages[direction];
-  gameInventory.textContent = 'Keys found: ' + gameKeys.size + ' / 3';
-
-  if (gameKeys.size === 3) {
-    gameStatus.textContent = 'OBJECTIVE: OPEN THE DOOR';
-    gameDoor.textContent = '🔑';
-    gameMessage.textContent = 'You found all three keys. Try the door!';
-  } else {
-    gameStatus.textContent = 'SEARCH FOR THE HIDDEN KEYS';
-  }
-}
-
-document.getElementById('look-left').addEventListener('click', () => searchGame('left'));
-document.getElementById('look-center').addEventListener('click', () => searchGame('center'));
-document.getElementById('look-right').addEventListener('click', () => searchGame('right'));
-
-document.getElementById('use-door').addEventListener('click', () => {
-  if (gameKeys.size < 3) {
-    gameMessage.textContent =
-      'The door is locked. You still need ' + (3 - gameKeys.size) + ' key(s).';
-    return;
-  }
-
-  gameWon = true;
-  gameDoor.textContent = '🚪';
-  gameMessage.textContent = 'The door slowly opens... YOU ESCAPED THE FIRST NIGHT!';
-  gameStatus.textContent = 'LEVEL COMPLETE';
-});
-
-document.getElementById('restart-game').addEventListener('click', () => {
-  gameKeys.clear();
-  gameWon = false;
-  gameDoor.textContent = '🔒';
-  gameStatus.textContent = 'OBJECTIVE: FIND 3 KEYS';
-  gameInventory.textContent = 'Keys found: 0 / 3';
-  gameMessage.textContent =
-    'The hallway is cold and quiet. Something flickers in the darkness...';
-});
-
-/* Feedback form */
-const feedbackForm = document.getElementById('game-feedback');
-const feedbackResult = document.getElementById('feedback-result');
-let selectedRating = '';
-
-feedbackForm.querySelectorAll('[data-rating]').forEach(button => {
-  button.addEventListener('click', () => {
-    selectedRating = button.dataset.rating;
-
-    feedbackForm.querySelectorAll('[data-rating]').forEach(option => {
-      option.setAttribute('aria-pressed', String(option === button));
-    });
-
-    feedbackResult.textContent =
-      'Reaction selected: ' + selectedRating + '. Add a comment or submit your feedback.';
-  });
-});
-
-feedbackForm.addEventListener('submit', event => {
-  event.preventDefault();
-
-  const comment = document.getElementById('feedback-message').value.trim();
-
-  if (!selectedRating && !comment) {
-    feedbackResult.textContent = 'Please choose a reaction or write a comment first.';
-    return;
-  }
-
-  feedbackResult.textContent =
-    'Thank you for your feedback! This demo does not send or save responses to a server yet.';
-});
-</script>
 </body>
 </html>
-```
