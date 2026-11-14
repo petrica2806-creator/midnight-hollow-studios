@@ -36,7 +36,7 @@ body {
 
 a { color: inherit; }
 
-/* HORROR BACKGROUND */
+/* BACKGROUND */
 
 .background-glow {
   position: fixed;
@@ -53,11 +53,7 @@ a { color: inherit; }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 20%,
-    #000000a8 100%
-  );
+  background: radial-gradient(ellipse at center, transparent 20%, #000000a8 100%);
 }
 
 .background-glow::before {
@@ -142,16 +138,10 @@ a { color: inherit; }
 }
 
 @keyframes particleRise {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
+  0% { transform: translate(0, 0); opacity: 0; }
   15% { opacity: .5; }
   85% { opacity: .2; }
-  100% {
-    transform: translate(40px, -110vh);
-    opacity: 0;
-  }
+  100% { transform: translate(40px, -110vh); opacity: 0; }
 }
 
 /* HEADER */
@@ -166,7 +156,7 @@ header {
   border-bottom: 1px solid #702536;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   backdrop-filter: blur(14px);
   transition: background .4s, border-color .4s;
 }
@@ -203,7 +193,26 @@ nav a {
   text-decoration: none;
   font-size: 13px;
   position: relative;
-  transition: color .3s;
+  transition: color .3s, transform .3s;
+  animation: menuEnter .8s ease both;
+}
+
+nav a:nth-child(1) { animation-delay: .15s; }
+nav a:nth-child(2) { animation-delay: .3s; }
+nav a:nth-child(3) { animation-delay: .45s; }
+nav a:nth-child(4) { animation-delay: .6s; }
+
+@keyframes menuEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 nav a::after {
@@ -218,8 +227,56 @@ nav a::after {
   transition: width .35s;
 }
 
-nav a:hover { color: var(--red-light); }
+nav a:hover {
+  color: var(--red-light);
+  text-shadow: 0 0 12px #ef7185;
+  transform: translateY(-3px);
+}
+
 nav a:hover::after { width: 100%; }
+
+/* SOUND BUTTON */
+
+.sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  color: #e2a5ae;
+  background: #1a0910;
+  border: 1px solid #763044;
+  border-radius: 5px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+  white-space: nowrap;
+}
+
+.sound-toggle:hover {
+  color: white;
+  border-color: #ef7185;
+  background: #4b1020;
+  box-shadow: 0 0 18px #a51a3850;
+}
+
+.sound-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #777;
+}
+
+.sound-toggle.active .sound-indicator {
+  background: #ef526e;
+  box-shadow: 0 0 10px #ef526e;
+  animation: soundPulse 1.2s infinite;
+}
+
+@keyframes soundPulse {
+  50% { opacity: .4; transform: scale(.7); }
+}
 
 /* BUTTONS */
 
@@ -236,11 +293,7 @@ nav a:hover::after { width: 100%; }
   letter-spacing: .7px;
   border: 1px solid #b75a69;
   border-radius: 5px;
-  transition:
-    transform .35s ease,
-    background .35s ease,
-    box-shadow .35s ease,
-    border-color .35s ease;
+  transition: transform .35s ease, background .35s ease, box-shadow .35s ease, border-color .35s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -253,12 +306,7 @@ nav a:hover::after { width: 100%; }
   left: -120%;
   width: 70%;
   height: 100%;
-  background: linear-gradient(
-    100deg,
-    transparent,
-    #ffffff35,
-    transparent
-  );
+  background: linear-gradient(100deg, transparent, #ffffff35, transparent);
   transform: skewX(-20deg);
   transition: left .65s;
 }
@@ -269,10 +317,7 @@ nav a:hover::after { width: 100%; }
   transform: translateY(-5px) scale(1.04);
   background: #a51e38;
   border-color: #ef7185;
-  box-shadow:
-    0 0 12px #ef718580,
-    0 0 35px #a51e3860,
-    0 10px 25px #00000080;
+  box-shadow: 0 0 12px #ef718580, 0 0 35px #a51e3860, 0 10px 25px #00000080;
 }
 
 .button:active { transform: scale(.97); }
@@ -315,14 +360,8 @@ nav a:hover::after { width: 100%; }
 }
 
 @keyframes moonPulse {
-  from {
-    opacity: .3;
-    transform: scale(.85);
-  }
-  to {
-    opacity: .9;
-    transform: scale(1.2);
-  }
+  from { opacity: .3; transform: scale(.85); }
+  to { opacity: .9; transform: scale(1.2); }
 }
 
 .hero-content {
@@ -333,16 +372,8 @@ nav a:hover::after { width: 100%; }
 }
 
 @keyframes heroEnter {
-  from {
-    opacity: 0;
-    transform: translateY(45px);
-    filter: blur(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
+  from { opacity: 0; transform: translateY(45px); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 .eyebrow {
@@ -500,11 +531,7 @@ h2 {
   position: absolute;
   inset: 0;
   opacity: 0;
-  background: radial-gradient(
-    circle at 50% 0%,
-    #a51a2d30,
-    transparent 70%
-  );
+  background: radial-gradient(circle at 50% 0%, #a51a2d30, transparent 70%);
   transition: opacity .4s;
   pointer-events: none;
 }
@@ -513,9 +540,7 @@ h2 {
 .card:hover {
   transform: translateY(-10px) scale(1.02);
   border-color: #a84b5b;
-  box-shadow:
-    0 12px 35px #74172b40,
-    0 0 20px #a51a2d20;
+  box-shadow: 0 12px 35px #74172b40, 0 0 20px #a51a2d20;
 }
 
 .platform-card:hover::before,
@@ -610,10 +635,7 @@ footer {
   opacity: 0;
   transform: translateY(45px) scale(.98);
   filter: blur(5px);
-  transition:
-    opacity .9s ease,
-    transform 1s cubic-bezier(.16,1,.3,1),
-    filter .9s ease;
+  transition: opacity .9s ease, transform 1s cubic-bezier(.16,1,.3,1), filter .9s ease;
 }
 
 .reveal.visible {
@@ -630,6 +652,51 @@ footer {
 .platform-card:nth-child(3),
 .card:nth-child(3) {
   transition-delay: .24s;
+}
+
+/* CUSTOM CURSOR */
+
+@media (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor a,
+  body.custom-cursor button {
+    cursor: none !important;
+  }
+
+  #horror-cursor,
+  #horror-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  #horror-cursor {
+    width: 7px;
+    height: 7px;
+    background: #ff526e;
+    box-shadow: 0 0 12px #ff244d, 0 0 25px #ff244d;
+    transform: translate(-50%, -50%);
+  }
+
+  #horror-cursor-ring {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ef7185;
+    box-shadow: 0 0 12px #a51a3860;
+    transform: translate(-50%, -50%);
+    transition: width .25s, height .25s, border-color .25s, background .25s;
+  }
+
+  #horror-cursor-ring.hovering {
+    width: 48px;
+    height: 48px;
+    border-color: #ff244d;
+    background: #ff244d15;
+  }
 }
 
 /* RESPONSIVE */
@@ -662,6 +729,10 @@ footer {
   nav { gap: 12px; }
 
   nav a { font-size: 11px; }
+
+  .sound-toggle {
+    padding: 9px 11px;
+  }
 
   .hero {
     padding: 80px 7%;
@@ -720,6 +791,11 @@ footer {
 <div class="fog fog-three"></div>
 <div id="horror-particles" aria-hidden="true"></div>
 
+<!-- CUSTOM CURSOR -->
+
+<div id="horror-cursor"></div>
+<div id="horror-cursor-ring"></div>
+
 <!-- HEADER -->
 
 <header>
@@ -731,6 +807,16 @@ footer {
     <a href="#experience">EXPERIENCE</a>
     <a href="#about">ABOUT</a>
   </nav>
+
+  <button
+    class="sound-toggle"
+    id="sound-toggle"
+    type="button"
+    aria-pressed="false"
+  >
+    <span class="sound-indicator"></span>
+    <span id="sound-label">SOUND OFF</span>
+  </button>
 </header>
 
 <main id="top">
@@ -926,11 +1012,9 @@ footer {
   © 2026 MIDNIGHT HOLLOW STUDIOS · ALL RIGHTS RESERVED
 </footer>
 
-<!-- JAVASCRIPT EFFECTS -->
-
 <script>
 
-// FLOATING HORROR PARTICLES
+/* FLOATING HORROR PARTICLES */
 
 const particleLayer = document.getElementById("horror-particles");
 
@@ -960,36 +1044,217 @@ if (particleLayer && !reduceMotion) {
   }
 }
 
-// CINEMATIC SCROLL REVEAL
+/* CINEMATIC SCROLL REVEAL */
 
 const revealElements = document.querySelectorAll(
   ".roblox-section, .platform-card, .card, #about, .quote"
 );
 
-const observer = new IntersectionObserver(
-  (entries) => {
+if ("IntersectionObserver" in window) {
 
-    entries.forEach((entry) => {
+  const observer = new IntersectionObserver(
+    (entries) => {
 
-      if (entry.isIntersecting) {
+      entries.forEach((entry) => {
 
-        entry.target.classList.add("visible");
+        if (entry.isIntersecting) {
 
-        observer.unobserve(entry.target);
-      }
+          entry.target.classList.add("visible");
 
+          observer.unobserve(entry.target);
+        }
+
+      });
+
+    },
+    { threshold: 0.12 }
+  );
+
+  revealElements.forEach((element) => {
+    element.classList.add("reveal");
+    observer.observe(element);
+  });
+
+} else {
+  revealElements.forEach((element) => {
+    element.classList.add("visible");
+  });
+}
+
+/* CUSTOM HORROR CURSOR */
+
+const cursor = document.getElementById("horror-cursor");
+const cursorRing = document.getElementById("horror-cursor-ring");
+
+const desktopPointer = window.matchMedia("(pointer: fine)").matches;
+
+if (
+  cursor &&
+  cursorRing &&
+  desktopPointer &&
+  !reduceMotion
+) {
+
+  document.body.classList.add("custom-cursor");
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let ringX = 0;
+  let ringY = 0;
+
+  window.addEventListener("pointermove", (e) => {
+
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    cursor.style.left = mouseX + "px";
+    cursor.style.top = mouseY + "px";
+
+    cursor.style.opacity = "1";
+    cursorRing.style.opacity = "1";
+
+  });
+
+  function animateRing() {
+
+    ringX += (mouseX - ringX) * 0.16;
+    ringY += (mouseY - ringY) * 0.16;
+
+    cursorRing.style.left = ringX + "px";
+    cursorRing.style.top = ringY + "px";
+
+    requestAnimationFrame(animateRing);
+  }
+
+  animateRing();
+
+  document.querySelectorAll("a, button").forEach((element) => {
+
+    element.addEventListener("pointerenter", () => {
+      cursorRing.classList.add("hovering");
     });
 
-  },
-  {
-    threshold: 0.12
-  }
-);
+    element.addEventListener("pointerleave", () => {
+      cursorRing.classList.remove("hovering");
+    });
 
-revealElements.forEach((element) => {
-  element.classList.add("reveal");
-  observer.observe(element);
-});
+  });
+}
+
+/* HORROR AMBIENT SOUND */
+
+const soundButton = document.getElementById("sound-toggle");
+const soundLabel = document.getElementById("sound-label");
+
+let audioContext = null;
+let masterGain = null;
+let soundEnabled = false;
+
+function createAmbientSound() {
+
+  const AudioContextClass =
+    window.AudioContext || window.webkitAudioContext;
+
+  if (!AudioContextClass) {
+    throw new Error("Audio is not supported");
+  }
+
+  audioContext = new AudioContextClass();
+
+  masterGain = audioContext.createGain();
+  masterGain.gain.value = 0;
+  masterGain.connect(audioContext.destination);
+
+  // Atmospheric wind
+
+  const buffer = audioContext.createBuffer(
+    1,
+    audioContext.sampleRate * 3,
+    audioContext.sampleRate
+  );
+
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < data.length; i++) {
+    data[i] = Math.random() * 2 - 1;
+  }
+
+  const noise = audioContext.createBufferSource();
+  noise.buffer = buffer;
+  noise.loop = true;
+
+  const filter = audioContext.createBiquadFilter();
+  filter.type = "lowpass";
+  filter.frequency.value = 420;
+
+  const noiseGain = audioContext.createGain();
+  noiseGain.gain.value = 0.035;
+
+  noise.connect(filter);
+  filter.connect(noiseGain);
+  noiseGain.connect(masterGain);
+
+  noise.start();
+
+  // Deep ambient drone
+
+  const drone = audioContext.createOscillator();
+  drone.type = "sine";
+  drone.frequency.value = 48;
+
+  const droneGain = audioContext.createGain();
+  droneGain.gain.value = 0.012;
+
+  drone.connect(droneGain);
+  droneGain.connect(masterGain);
+
+  drone.start();
+}
+
+/* SOUND ON / OFF */
+
+async function toggleAmbientSound() {
+
+  if (!soundButton) return;
+
+  try {
+
+    if (!audioContext) {
+      createAmbientSound();
+    }
+
+    await audioContext.resume();
+
+    soundEnabled = !soundEnabled;
+
+    masterGain.gain.setTargetAtTime(
+      soundEnabled ? 0.7 : 0,
+      audioContext.currentTime,
+      0.5
+    );
+
+    soundButton.classList.toggle("active", soundEnabled);
+
+    soundButton.setAttribute(
+      "aria-pressed",
+      String(soundEnabled)
+    );
+
+    soundLabel.textContent = soundEnabled
+      ? "SOUND ON"
+      : "SOUND OFF";
+
+  } catch (error) {
+
+    console.error("Ambient audio unavailable:", error);
+
+    soundLabel.textContent = "AUDIO UNAVAILABLE";
+  }
+}
+
+if (soundButton) {
+  soundButton.addEventListener("click", toggleAmbientSound);
+}
 
 </script>
 
