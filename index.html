@@ -9,12 +9,14 @@
 
 <style>
 :root {
-  --site-primary: #8b172b;
-  --site-secondary: #241017;
-  --site-background: #080609;
-  --site-on-background: #f7f2f2;
-  --site-font-body: Arial, sans-serif;
-  --site-font-heading: Georgia, serif;
+  --red: #921d32;
+  --red-light: #ef7185;
+  --red-dark: #4b071b;
+  --background: #080609;
+  --text: #f7f2f2;
+  --muted: #c5bdcf;
+  --heading: Georgia, serif;
+  --body: Arial, sans-serif;
 }
 
 * {
@@ -28,9 +30,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--site-background);
-  color: var(--site-on-background);
-  font-family: var(--site-font-body);
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--body);
   overflow-x: hidden;
 }
 
@@ -38,16 +40,18 @@ a {
   color: inherit;
 }
 
-/* HORROR BACKGROUND */
+/* =================================
+   CINEMATIC HORROR BACKGROUND
+================================= */
 
 .background-glow {
   position: fixed;
   inset: 0;
-  z-index: -3;
+  z-index: -5;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 78% 18%, #8f142b35, transparent 42%),
-    radial-gradient(ellipse at 12% 82%, #4b071b30, transparent 48%),
+    radial-gradient(ellipse at 80% 15%, #9b142b38, transparent 42%),
+    radial-gradient(ellipse at 10% 85%, #51091c35, transparent 48%),
     linear-gradient(180deg, #080609, #10070b 55%, #070609);
 }
 
@@ -55,66 +59,75 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at center, transparent 25%, #000000a8 100%);
+  background: radial-gradient(
+    ellipse at center,
+    transparent 20%,
+    #000000a8 100%
+  );
 }
 
-/* ANIMATED FOG */
+/* Film grain */
+
+.background-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .10;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+}
+
+/* FOG */
 
 .fog {
   position: fixed;
   width: 75vw;
   height: 42vh;
   border-radius: 50%;
-  filter: blur(70px);
-  background: radial-gradient(
-    ellipse,
-    #a9a0a51c 0%,
-    #7770780d 45%,
-    transparent 72%
-  );
+  filter: blur(75px);
   pointer-events: none;
   z-index: -2;
-  opacity: .8;
+  opacity: .75;
 }
 
 .fog-one {
-  top: 12%;
-  left: -28%;
-  animation: horrorFogOne 26s ease-in-out infinite alternate;
+  top: 10%;
+  left: -25%;
+  background: radial-gradient(ellipse, #aaa0a51e, transparent 70%);
+  animation: fogOne 26s ease-in-out infinite alternate;
 }
 
 .fog-two {
-  bottom: 8%;
+  bottom: 5%;
   right: -25%;
-  background: radial-gradient(
-    ellipse,
-    #65101b22 0%,
-    #7770780b 48%,
-    transparent 72%
-  );
-  animation: horrorFogTwo 32s ease-in-out infinite alternate;
+  background: radial-gradient(ellipse, #82172c29, transparent 70%);
+  animation: fogTwo 32s ease-in-out infinite alternate;
 }
 
-@keyframes horrorFogOne {
-  from {
-    transform: translate3d(-3vw, 0, 0) scale(.9);
-  }
-  to {
-    transform: translate3d(20vw, 12vh, 0) scale(1.25);
-  }
+.fog-three {
+  top: 55%;
+  left: 15%;
+  width: 65vw;
+  height: 30vh;
+  background: radial-gradient(ellipse, #81727d13, transparent 70%);
+  animation: fogThree 38s ease-in-out infinite alternate;
 }
 
-@keyframes horrorFogTwo {
-  from {
-    transform: translate3d(4vw, 2vh, 0) scale(1.1);
-  }
-  to {
-    transform: translate3d(-18vw, -10vh, 0) scale(.85);
-  }
+@keyframes fogOne {
+  from { transform: translate(-3vw, 0) scale(.9); }
+  to { transform: translate(20vw, 12vh) scale(1.3); }
 }
 
-/* FLOATING PARTICLES */
+@keyframes fogTwo {
+  from { transform: translate(4vw, 2vh) scale(1.1); }
+  to { transform: translate(-18vw, -10vh) scale(.85); }
+}
+
+@keyframes fogThree {
+  from { transform: translateX(-12vw); }
+  to { transform: translateX(18vw); }
+}
+
+/* PARTICLES */
 
 #horror-particles {
   position: fixed;
@@ -130,37 +143,28 @@ a {
   width: 2px;
   height: 2px;
   border-radius: 50%;
-  background: #d8c4c7;
+  background: #e2c8ce;
   opacity: 0;
-  box-shadow: 0 0 8px 2px #b23a4b55;
+  box-shadow: 0 0 10px 2px #b23a4b66;
   animation: particleRise linear infinite;
 }
 
 @keyframes particleRise {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0);
     opacity: 0;
   }
-  12% {
-    opacity: .45;
-  }
-  85% {
-    opacity: .2;
-  }
+  15% { opacity: .5; }
+  85% { opacity: .2; }
   100% {
-    transform: translate3d(35px, -110vh, 0);
+    transform: translate(40px, -110vh);
     opacity: 0;
   }
 }
 
-/* CONTENT LAYERS */
-
-header, main, footer {
-  position: relative;
-  z-index: 1;
-}
-
-/* HEADER */
+/* =================================
+   HEADER
+================================= */
 
 header {
   display: flex;
@@ -169,11 +173,17 @@ header {
   gap: 24px;
   padding: 22px 7%;
   background: #10070be8;
-  border-bottom: 1px solid #6b2636;
+  border-bottom: 1px solid #702536;
   position: sticky;
   top: 0;
   z-index: 10;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  transition: background .4s, border-color .4s;
+}
+
+header:hover {
+  background: #16080df2;
+  border-color: #a83a50;
 }
 
 .logo {
@@ -182,6 +192,13 @@ header {
   letter-spacing: 3px;
   text-decoration: none;
   white-space: nowrap;
+  transition: .35s;
+}
+
+.logo:hover {
+  color: white;
+  text-shadow: 0 0 12px #ef7185, 0 0 30px #a51a35;
+  letter-spacing: 4px;
 }
 
 nav {
@@ -195,14 +212,33 @@ nav a {
   color: white;
   text-decoration: none;
   font-size: 13px;
-  transition: .3s;
+  position: relative;
+  transition: color .3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--red-light);
+  box-shadow: 0 0 8px var(--red-light);
+  transition: width .35s;
 }
 
 nav a:hover {
-  color: #ef7185;
+  color: var(--red-light);
 }
 
-/* BUTTONS */
+nav a:hover::after {
+  width: 100%;
+}
+
+/* =================================
+   BUTTON ANIMATIONS
+================================= */
 
 .button {
   display: inline-flex;
@@ -217,14 +253,49 @@ nav a:hover {
   letter-spacing: .7px;
   border: 1px solid #b75a69;
   border-radius: 5px;
-  transition: .3s ease;
+  transition:
+    transform .35s ease,
+    background .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    #ffffff35,
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left .65s;
+}
+
+.button:hover::before {
+  left: 150%;
 }
 
 .button:hover {
-  transform: translateY(-4px) scale(1.03);
-  background: #921d32;
-  box-shadow: 0 0 25px #9b1c3670;
+  transform: translateY(-5px) scale(1.04);
+  background: #a51e38;
+  border-color: #ef7185;
+  box-shadow:
+    0 0 12px #ef718580,
+    0 0 35px #a51e3860,
+    0 10px 25px #00000080;
+}
+
+.button:active {
+  transform: scale(.97);
 }
 
 .button.secondary {
@@ -234,35 +305,36 @@ nav a:hover {
 
 .button.secondary:hover {
   background: #261017;
-  border-color: #b75a69;
+  border-color: var(--red-light);
 }
 
-/* HERO */
+/* =================================
+   HERO SECTION
+================================= */
 
 .hero {
   min-height: 620px;
   padding: 110px 9%;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
   background:
     radial-gradient(ellipse at 82% 42%, #8f142b45, transparent 38%),
     linear-gradient(120deg, #080609ef, #170910e8, #080609f2);
-  position: relative;
-  overflow: hidden;
 }
 
-.hero::after {
+.hero::before {
   content: "";
   position: absolute;
   width: 300px;
   height: 300px;
   right: 8%;
-  top: 20%;
+  top: 18%;
   border-radius: 50%;
-  background: radial-gradient(circle, #a51a2d30, transparent 70%);
-  filter: blur(15px);
+  background: radial-gradient(circle, #a51a2d35, transparent 70%);
+  filter: blur(12px);
   animation: moonPulse 6s ease-in-out infinite alternate;
-  pointer-events: none;
 }
 
 @keyframes moonPulse {
@@ -280,17 +352,19 @@ nav a:hover {
   max-width: 720px;
   position: relative;
   z-index: 2;
-  animation: heroEnter 1.2s ease both;
+  animation: heroEnter 1.4s cubic-bezier(.16,1,.3,1) both;
 }
 
 @keyframes heroEnter {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(45px);
+    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
@@ -302,7 +376,7 @@ nav a:hover {
 }
 
 h1 {
-  font-family: var(--site-font-heading);
+  font-family: var(--heading);
   font-size: clamp(48px, 8vw, 100px);
   line-height: .95;
   margin: 25px 0;
@@ -313,9 +387,39 @@ h1 span {
   font-style: italic;
 }
 
+/* GLITCH TEXT */
+
 .glitch {
   display: inline-block;
+  position: relative;
   animation: glitchFlicker 4s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: "THE NIGHT IS NOT OVER.";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.glitch::before {
+  color: #ff244d;
+  transform: translateX(-2px);
+  clip-path: inset(20% 0 65% 0);
+}
+
+.glitch::after {
+  color: #5caaff;
+  transform: translateX(2px);
+  clip-path: inset(65% 0 15% 0);
+}
+
+.glitch:hover::before,
+.glitch:hover::after {
+  opacity: .7;
+  animation: glitchSlice .3s steps(2) infinite;
 }
 
 @keyframes glitchFlicker {
@@ -331,13 +435,17 @@ h1 span {
     text-shadow: 3px 0 #ef7185, -3px 0 #6d1025;
     transform: translateX(-2px);
   }
-  96% {
-    transform: translateX(0);
-  }
+  96% { transform: translateX(0); }
+}
+
+@keyframes glitchSlice {
+  0% { transform: translate(3px, -1px); }
+  50% { transform: translate(-3px, 1px); }
+  100% { transform: translate(2px, 0); }
 }
 
 p {
-  color: #c5bdcf;
+  color: var(--muted);
   line-height: 1.8;
 }
 
@@ -353,14 +461,16 @@ p {
   margin-top: 30px;
 }
 
-/* GENERAL SECTIONS */
+/* =================================
+   GENERAL SECTIONS
+================================= */
 
 .content {
   padding: 80px 9%;
 }
 
 h2 {
-  font-family: var(--site-font-heading);
+  font-family: var(--heading);
   font-size: clamp(32px, 5vw, 54px);
 }
 
@@ -408,23 +518,53 @@ h2 {
   background: linear-gradient(145deg, #29121b, #100c17);
   border: 1px solid #ffffff20;
   border-radius: 10px;
-  transition: .35s ease;
+  transition: .4s cubic-bezier(.16,1,.3,1);
+  position: relative;
+  overflow: hidden;
 }
 
-.platform-card:hover {
-  transform: translateY(-8px);
+.platform-card::before,
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(
+    circle at 50% 0%,
+    #a51a2d30,
+    transparent 70%
+  );
+  transition: opacity .4s;
+  pointer-events: none;
+}
+
+.platform-card:hover,
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
   border-color: #a84b5b;
-  box-shadow: 0 12px 35px #74172b40;
+  box-shadow:
+    0 12px 35px #74172b40,
+    0 0 20px #a51a2d20;
+}
+
+.platform-card:hover::before,
+.card:hover::before {
+  opacity: 1;
 }
 
 .platform-icon {
   font-size: 38px;
   margin-bottom: 15px;
+  transition: transform .4s;
+}
+
+.platform-card:hover .platform-icon {
+  transform: scale(1.2) rotate(-5deg);
 }
 
 .platform-card h3 {
   color: #e9cbd0;
-  font-family: var(--site-font-heading);
+  font-family: var(--heading);
   font-size: 23px;
 }
 
@@ -460,17 +600,14 @@ h2 {
   background: linear-gradient(145deg, #29121b, #100c17);
   border: 1px solid #ffffff20;
   border-radius: 10px;
-  transition: .35s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  border-color: #a84b5b;
-  box-shadow: 0 12px 30px #74172b40;
+  transition: .4s cubic-bezier(.16,1,.3,1);
+  position: relative;
+  overflow: hidden;
 }
 
 .card h3 {
   color: #e9cbd0;
+  position: relative;
 }
 
 /* ABOUT */
@@ -482,9 +619,10 @@ h2 {
 
 .quote p {
   color: #e9cbd0;
-  font-family: var(--site-font-heading);
+  font-family: var(--heading);
   font-size: clamp(24px, 4vw, 40px);
   font-style: italic;
+  text-shadow: 0 0 20px #a51a2d30;
 }
 
 /* FOOTER */
@@ -497,20 +635,39 @@ footer {
   text-align: center;
 }
 
-/* SCROLL EFFECT */
+/* =================================
+   CINEMATIC SCROLL TRANSITIONS
+================================= */
 
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
+  transform: translateY(45px) scale(.98);
+  filter: blur(5px);
+  transition:
+    opacity .9s ease,
+    transform 1s cubic-bezier(.16,1,.3,1),
+    filter .9s ease;
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
-/* RESPONSIVE */
+.platform-card:nth-child(2),
+.card:nth-child(2) {
+  transition-delay: .12s;
+}
+
+.platform-card:nth-child(3),
+.card:nth-child(3) {
+  transition-delay: .24s;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
 
 @media(max-width: 850px) {
   header {
@@ -570,6 +727,10 @@ footer {
   .button {
     text-align: center;
   }
+
+  .fog {
+    filter: blur(55px);
+  }
 }
 
 /* ACCESSIBILITY */
@@ -586,6 +747,7 @@ footer {
   .reveal {
     opacity: 1;
     transform: none;
+    filter: none;
   }
 
   .horror-particle {
@@ -597,9 +759,12 @@ footer {
 
 <body>
 
+<!-- BACKGROUND -->
+
 <div class="background-glow"></div>
 <div class="fog fog-one"></div>
 <div class="fog fog-two"></div>
+<div class="fog fog-three"></div>
 <div id="horror-particles" aria-hidden="true"></div>
 
 <!-- HEADER -->
@@ -699,7 +864,6 @@ footer {
       <article class="platform-card reveal">
         <div class="platform-icon">🎮</div>
         <h3>Roblox</h3>
-
         <p>
           Available now. Enter Midnight Hollow
           and discover the nightmare.
@@ -718,24 +882,20 @@ footer {
       <article class="platform-card reveal">
         <div class="platform-icon">💻</div>
         <h3>MacBook</h3>
-
         <p>
           A new way to experience the darkness
           is coming soon.
         </p>
-
         <div class="coming-soon">COMING SOON</div>
       </article>
 
       <article class="platform-card reveal">
         <div class="platform-icon">🖥️</div>
         <h3>Windows</h3>
-
         <p>
           Get ready to explore Midnight Hollow
           on your PC.
         </p>
-
         <div class="coming-soon">COMING SOON</div>
       </article>
 
@@ -754,7 +914,6 @@ footer {
 
       <article class="card reveal">
         <h3>Explore the Unknown</h3>
-
         <p>
           Walk through abandoned halls, strange stations,
           and places where nothing feels quite right.
@@ -763,7 +922,6 @@ footer {
 
       <article class="card reveal">
         <h3>Discover Secrets</h3>
-
         <p>
           Search for clues, hidden rooms, mysterious symbols,
           and secrets buried deep in the darkness.
@@ -772,7 +930,6 @@ footer {
 
       <article class="card reveal">
         <h3>Survive 3 AM</h3>
-
         <p>
           Keep your courage. The clock is ticking,
           and your nightmare is only beginning.
@@ -816,7 +973,7 @@ footer {
   © 2026 MIDNIGHT HOLLOW STUDIOS · ALL RIGHTS RESERVED
 </footer>
 
-<!-- ANIMATIONS -->
+<!-- JAVASCRIPT EFFECTS -->
 
 <script>
 
@@ -846,14 +1003,11 @@ if (particleLayer && !reduceMotion) {
     particle.style.animationDelay =
       `${-Math.random() * 35}s`;
 
-    particle.style.transform =
-      `scale(${0.6 + Math.random() * 1.5})`;
-
     particleLayer.appendChild(particle);
   }
 }
 
-// SCROLL REVEAL
+// CINEMATIC SCROLL REVEAL
 
 const revealElements = document.querySelectorAll(
   ".roblox-section, .platform-card, .card, #about, .quote"
@@ -880,11 +1034,8 @@ const observer = new IntersectionObserver(
 );
 
 revealElements.forEach((element) => {
-
   element.classList.add("reveal");
-
   observer.observe(element);
-
 });
 
 </script>
