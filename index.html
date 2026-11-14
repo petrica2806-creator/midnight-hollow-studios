@@ -4,17 +4,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#09070d">
+<meta name="theme-color" content="#080609">
 <title>Midnight Hollow Studios</title>
 
 <style>
 :root {
-  --site-primary: #6d28d9;
-  --site-secondary: #21142f;
-  --site-background: #09070d;
-  --site-on-primary: #ffffff;
-  --site-on-secondary: #f7f2fb;
-  --site-on-background: #f7f2fb;
+  --site-primary: #8b172b;
+  --site-secondary: #241017;
+  --site-background: #080609;
+  --site-on-background: #f7f2f2;
   --site-font-body: Arial, sans-serif;
   --site-font-heading: Georgia, serif;
 }
@@ -40,49 +38,126 @@ a {
   color: inherit;
 }
 
-/* BACKGROUND EFFECTS */
+/* HORROR BACKGROUND */
 
 .background-glow {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -3;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 80% 20%, #51208a35, transparent 45%),
-    radial-gradient(ellipse at 10% 85%, #6d28d925, transparent 45%),
-    #09070d;
+    radial-gradient(ellipse at 78% 18%, #8f142b35, transparent 42%),
+    radial-gradient(ellipse at 12% 82%, #4b071b30, transparent 48%),
+    linear-gradient(180deg, #080609, #10070b 55%, #070609);
 }
+
+.background-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 25%, #000000a8 100%);
+}
+
+/* ANIMATED FOG */
 
 .fog {
   position: fixed;
-  width: 55vw;
-  height: 35vh;
+  width: 75vw;
+  height: 42vh;
   border-radius: 50%;
-  filter: blur(90px);
-  background: #6d28d918;
+  filter: blur(70px);
+  background: radial-gradient(
+    ellipse,
+    #a9a0a51c 0%,
+    #7770780d 45%,
+    transparent 72%
+  );
   pointer-events: none;
-  z-index: -1;
-  animation: fogMove 18s ease-in-out infinite alternate;
+  z-index: -2;
+  opacity: .8;
 }
 
 .fog-one {
-  top: 10%;
-  left: -20%;
+  top: 12%;
+  left: -28%;
+  animation: horrorFogOne 26s ease-in-out infinite alternate;
 }
 
 .fog-two {
-  bottom: 5%;
-  right: -20%;
-  animation-delay: -8s;
+  bottom: 8%;
+  right: -25%;
+  background: radial-gradient(
+    ellipse,
+    #65101b22 0%,
+    #7770780b 48%,
+    transparent 72%
+  );
+  animation: horrorFogTwo 32s ease-in-out infinite alternate;
 }
 
-@keyframes fogMove {
+@keyframes horrorFogOne {
   from {
-    transform: translate(0, 0) scale(1);
+    transform: translate3d(-3vw, 0, 0) scale(.9);
   }
   to {
-    transform: translate(15vw, 8vh) scale(1.3);
+    transform: translate3d(20vw, 12vh, 0) scale(1.25);
   }
+}
+
+@keyframes horrorFogTwo {
+  from {
+    transform: translate3d(4vw, 2vh, 0) scale(1.1);
+  }
+  to {
+    transform: translate3d(-18vw, -10vh, 0) scale(.85);
+  }
+}
+
+/* FLOATING PARTICLES */
+
+#horror-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.horror-particle {
+  position: absolute;
+  bottom: -12px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #d8c4c7;
+  opacity: 0;
+  box-shadow: 0 0 8px 2px #b23a4b55;
+  animation: particleRise linear infinite;
+}
+
+@keyframes particleRise {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: .45;
+  }
+  85% {
+    opacity: .2;
+  }
+  100% {
+    transform: translate3d(35px, -110vh, 0);
+    opacity: 0;
+  }
+}
+
+/* CONTENT LAYERS */
+
+header, main, footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* HEADER */
@@ -93,8 +168,8 @@ header {
   align-items: center;
   gap: 24px;
   padding: 22px 7%;
-  background: #100a18;
-  border-bottom: 1px solid #39234f;
+  background: #10070be8;
+  border-bottom: 1px solid #6b2636;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -102,7 +177,7 @@ header {
 }
 
 .logo {
-  color: #d8b4fe;
+  color: #e2a5ae;
   font-weight: bold;
   letter-spacing: 3px;
   text-decoration: none;
@@ -124,7 +199,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #c4b5fd;
+  color: #ef7185;
 }
 
 /* BUTTONS */
@@ -134,13 +209,13 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   padding: 15px 22px;
-  background: #6d28d9;
+  background: #721626;
   color: white;
   text-decoration: none;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: .7px;
-  border: 1px solid #a78bfa;
+  border: 1px solid #b75a69;
   border-radius: 5px;
   transition: .3s ease;
   cursor: pointer;
@@ -148,18 +223,18 @@ nav a:hover {
 
 .button:hover {
   transform: translateY(-4px) scale(1.03);
-  background: #7c3aed;
-  box-shadow: 0 0 25px #7c3aed70;
+  background: #921d32;
+  box-shadow: 0 0 25px #9b1c3670;
 }
 
 .button.secondary {
   background: transparent;
-  border-color: #766582;
+  border-color: #76545b;
 }
 
 .button.secondary:hover {
-  background: #21142f;
-  border-color: #a78bfa;
+  background: #261017;
+  border-color: #b75a69;
 }
 
 /* HERO */
@@ -170,12 +245,41 @@ nav a:hover {
   display: flex;
   align-items: center;
   background:
-    radial-gradient(ellipse at 80% 45%, #51208a70, transparent 40%),
-    linear-gradient(120deg, #09070d, #180d25, #09070d);
+    radial-gradient(ellipse at 82% 42%, #8f142b45, transparent 38%),
+    linear-gradient(120deg, #080609ef, #170910e8, #080609f2);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  right: 8%;
+  top: 20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #a51a2d30, transparent 70%);
+  filter: blur(15px);
+  animation: moonPulse 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes moonPulse {
+  from {
+    opacity: .3;
+    transform: scale(.85);
+  }
+  to {
+    opacity: .9;
+    transform: scale(1.2);
+  }
 }
 
 .hero-content {
   max-width: 720px;
+  position: relative;
+  z-index: 2;
   animation: heroEnter 1.2s ease both;
 }
 
@@ -191,7 +295,7 @@ nav a:hover {
 }
 
 .eyebrow {
-  color: #c4b5fd;
+  color: #d6a0a8;
   letter-spacing: 4px;
   font-size: 12px;
   font-weight: bold;
@@ -205,7 +309,7 @@ h1 {
 }
 
 h1 span {
-  color: #c4b5fd;
+  color: #d6a0a8;
   font-style: italic;
 }
 
@@ -216,15 +320,15 @@ h1 span {
 
 @keyframes glitchFlicker {
   0%, 91%, 100% {
-    text-shadow: 0 0 10px #a78bfa40;
+    text-shadow: 0 0 10px #b75a6940;
     transform: translateX(0);
   }
   92% {
-    text-shadow: -3px 0 #c084fc, 3px 0 #6d28d9;
+    text-shadow: -3px 0 #ef7185, 3px 0 #6d1025;
     transform: translateX(2px);
   }
   94% {
-    text-shadow: 3px 0 #c084fc, -3px 0 #6d28d9;
+    text-shadow: 3px 0 #ef7185, -3px 0 #6d1025;
     transform: translateX(-2px);
   }
   96% {
@@ -265,7 +369,7 @@ h2 {
 .roblox-section {
   text-align: center;
   padding: 80px 20px;
-  background: linear-gradient(180deg, #160e20, #09070d);
+  background: linear-gradient(180deg, #1b0b13, #09070d);
   border-top: 1px solid #ffffff15;
   border-bottom: 1px solid #ffffff15;
 }
@@ -280,7 +384,7 @@ h2 {
 .platform-section {
   padding: 85px 9%;
   text-align: center;
-  background: linear-gradient(180deg, #09070d, #160e20, #09070d);
+  background: linear-gradient(180deg, #09070d, #1b0b13, #09070d);
 }
 
 .platform-section h2 {
@@ -301,7 +405,7 @@ h2 {
 
 .platform-card {
   padding: 30px 24px;
-  background: linear-gradient(145deg, #21142f, #100c17);
+  background: linear-gradient(145deg, #29121b, #100c17);
   border: 1px solid #ffffff20;
   border-radius: 10px;
   transition: .35s ease;
@@ -309,8 +413,8 @@ h2 {
 
 .platform-card:hover {
   transform: translateY(-8px);
-  border-color: #a78bfa;
-  box-shadow: 0 12px 35px #6d28d930;
+  border-color: #a84b5b;
+  box-shadow: 0 12px 35px #74172b40;
 }
 
 .platform-icon {
@@ -319,7 +423,7 @@ h2 {
 }
 
 .platform-card h3 {
-  color: #e9d5ff;
+  color: #e9cbd0;
   font-family: var(--site-font-heading);
   font-size: 23px;
 }
@@ -333,13 +437,13 @@ h2 {
   display: inline-block;
   margin-top: 12px;
   padding: 11px 18px;
-  color: #d8b4fe;
-  border: 1px solid #a78bfa;
+  color: #e2a5ae;
+  border: 1px solid #a84b5b;
   border-radius: 5px;
   font-size: 11px;
   font-weight: bold;
   letter-spacing: 2px;
-  background: #6d28d918;
+  background: #6d162618;
 }
 
 /* EXPERIENCE CARDS */
@@ -353,7 +457,7 @@ h2 {
 
 .card {
   padding: 26px;
-  background: linear-gradient(145deg, #21142f, #100c17);
+  background: linear-gradient(145deg, #29121b, #100c17);
   border: 1px solid #ffffff20;
   border-radius: 10px;
   transition: .35s ease;
@@ -361,12 +465,12 @@ h2 {
 
 .card:hover {
   transform: translateY(-8px);
-  border-color: #a78bfa;
-  box-shadow: 0 12px 30px #6d28d925;
+  border-color: #a84b5b;
+  box-shadow: 0 12px 30px #74172b40;
 }
 
 .card h3 {
-  color: #e9d5ff;
+  color: #e9cbd0;
 }
 
 /* ABOUT */
@@ -377,7 +481,7 @@ h2 {
 }
 
 .quote p {
-  color: #e9d5ff;
+  color: #e9cbd0;
   font-family: var(--site-font-heading);
   font-size: clamp(24px, 4vw, 40px);
   font-style: italic;
@@ -393,7 +497,7 @@ footer {
   text-align: center;
 }
 
-/* CINEMATIC SCROLL EFFECT */
+/* SCROLL EFFECT */
 
 .reveal {
   opacity: 0;
@@ -468,6 +572,8 @@ footer {
   }
 }
 
+/* ACCESSIBILITY */
+
 @media(prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -481,6 +587,10 @@ footer {
     opacity: 1;
     transform: none;
   }
+
+  .horror-particle {
+    display: none;
+  }
 }
 </style>
 </head>
@@ -490,6 +600,7 @@ footer {
 <div class="background-glow"></div>
 <div class="fog fog-one"></div>
 <div class="fog fog-two"></div>
+<div id="horror-particles" aria-hidden="true"></div>
 
 <!-- HEADER -->
 
@@ -588,6 +699,7 @@ footer {
       <article class="platform-card reveal">
         <div class="platform-icon">🎮</div>
         <h3>Roblox</h3>
+
         <p>
           Available now. Enter Midnight Hollow
           and discover the nightmare.
@@ -606,6 +718,7 @@ footer {
       <article class="platform-card reveal">
         <div class="platform-icon">💻</div>
         <h3>MacBook</h3>
+
         <p>
           A new way to experience the darkness
           is coming soon.
@@ -617,6 +730,7 @@ footer {
       <article class="platform-card reveal">
         <div class="platform-icon">🖥️</div>
         <h3>Windows</h3>
+
         <p>
           Get ready to explore Midnight Hollow
           on your PC.
@@ -640,6 +754,7 @@ footer {
 
       <article class="card reveal">
         <h3>Explore the Unknown</h3>
+
         <p>
           Walk through abandoned halls, strange stations,
           and places where nothing feels quite right.
@@ -648,6 +763,7 @@ footer {
 
       <article class="card reveal">
         <h3>Discover Secrets</h3>
+
         <p>
           Search for clues, hidden rooms, mysterious symbols,
           and secrets buried deep in the darkness.
@@ -656,6 +772,7 @@ footer {
 
       <article class="card reveal">
         <h3>Survive 3 AM</h3>
+
         <p>
           Keep your courage. The clock is ticking,
           and your nightmare is only beginning.
@@ -702,18 +819,60 @@ footer {
 <!-- ANIMATIONS -->
 
 <script>
+
+// FLOATING HORROR PARTICLES
+
+const particleLayer = document.getElementById("horror-particles");
+
+const reduceMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
+if (particleLayer && !reduceMotion) {
+
+  const particleCount = window.innerWidth < 600 ? 18 : 34;
+
+  for (let i = 0; i < particleCount; i++) {
+
+    const particle = document.createElement("span");
+
+    particle.className = "horror-particle";
+
+    particle.style.left = `${Math.random() * 100}%`;
+
+    particle.style.animationDuration =
+      `${18 + Math.random() * 24}s`;
+
+    particle.style.animationDelay =
+      `${-Math.random() * 35}s`;
+
+    particle.style.transform =
+      `scale(${0.6 + Math.random() * 1.5})`;
+
+    particleLayer.appendChild(particle);
+  }
+}
+
+// SCROLL REVEAL
+
 const revealElements = document.querySelectorAll(
   ".roblox-section, .platform-card, .card, #about, .quote"
 );
 
 const observer = new IntersectionObserver(
   (entries) => {
+
     entries.forEach((entry) => {
+
       if (entry.isIntersecting) {
+
         entry.target.classList.add("visible");
+
         observer.unobserve(entry.target);
       }
+
     });
+
   },
   {
     threshold: 0.12
@@ -721,9 +880,13 @@ const observer = new IntersectionObserver(
 );
 
 revealElements.forEach((element) => {
+
   element.classList.add("reveal");
+
   observer.observe(element);
+
 });
+
 </script>
 
 </body>
